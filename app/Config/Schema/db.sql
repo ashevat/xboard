@@ -2,7 +2,7 @@
 -- version 3.3.9
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
+-- Host: 
 -- Generation Time: Sep 15, 2012 at 10:01 PM
 -- Server version: 5.1.53
 -- PHP Version: 5.3.4
