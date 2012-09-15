@@ -1,0 +1,95 @@
+UserMgmt is a User Management Plugin for cakephp 2.x
+Plugin Premium version 2.0 (stable)
+
+Hey wanna Demo ??? http://umpremium.ektasoftwares.com/
+
+For All featues go to http://umpremium.ektasoftwares.com/
+
+For Documentations go to http://developers.ektasoftwares.com/docs/umpremium/index.html
+
+INSTALLATION
+------------
+
+1. Download the latest version from http://www.ektasoftwares.com/products
+	go to yourapp/app/Plugin
+	extract here
+	name it Usermgmt
+
+2. Schema import (use your favorite sql tool to import the schema)
+
+	yourapp/app/Plugin/Usermgmt/Config/Schema/usermgmt-2.0.sql
+
+3. Configure your AppController class
+
+        Your yourapp/app/Controller/AppController.php should look like this:
+
+<?php
+	class AppController extends Controller {
+		var $helpers = array('Form', 'Html', 'Session', 'Js', 'Usermgmt.UserAuth', 'Usermgmt.Image');
+		public $components = array('Session','RequestHandler', 'Usermgmt.UserAuth');
+		function beforeFilter(){
+			$this->userAuth();
+		}
+		private function userAuth(){
+			$this->UserAuth->beforeFilter($this);
+		}
+	}
+?>
+4. (Optional)
+	This plugin is CSRF protection enabled and If you want to use CSRF in rest Application just use Security component
+	for ex. $components in Your yourapp/app/Controller/AppController.php should look like this:
+	public $components = array('Session','RequestHandler', 'Usermgmt.UserAuth', 'Security');
+
+5. Enable Plugin in your bootstrap.php
+
+        yourapp/app/Config/bootstrap.php should include this line
+
+        // load Usermgmt plugin and apply plugin routes. Keep all the other plugins you are using here
+        CakePlugin::loadAll(array(
+            'Usermgmt' => array('routes' => true, 'bootstrap' => true),
+        ));
+
+6. Add plugin css in your layout file
+    for example yourapp/app/View/Layouts/default.ctp
+    echo $this->Html->css('/usermgmt/css/umstyle.css?q='.QRDN);
+    
+    Please note: I have removed cake.generic.css from umstyle.css in 1.1 version, Now it's your wish you can use cake.generic.css separatly. If you want to use cake.generic.css then you should load it before plugin css.
+    In 1.2 version I have added cache control query string in css and js files include syntax. For more information see documentation.
+
+7. Go to yourdomain/login
+Default user name password 
+username- admin
+password- 123456
+
+ALL DONE !
+
+
+How to Upgrade 1.0 to 1.1
+
+1. Run queries from yourapp/app/Plugin/Usermgmt/Config/Schema/sql-changes-1.1.txt
+2. If you haven't changed 1.0 version files then you can replace 1.0 version. See above INSTALLATION guide.
+3. If you have your own changes in existing changes. Then you should diff both versions with any Diff Softwares for ex Kdiff (http://kdiff3.sourceforge.net/)
+Please take a backup of your existing files before overwriting.
+4. I suggest you please do not overwrite new plugin to existing plugin instead of this you should make your changes in new plugin.
+5. I have removed cake.generic.css from umstyle.css in 1.1 version, Now it's your wish you can use cake.generic.css separatly. If you want to use cake.generic.css then you should load it before plugin css.
+
+
+How to upgrade 1.0 to 1.2 or 2.0
+1. Run queries from yourapp/app/Plugin/Usermgmt/Config/Schema/sql-changes-1.1.txt
+2. Run queries from yourapp/app/Plugin/Usermgmt/Config/Schema/sql-changes-1.2.txt
+3. If you haven't changed 1.0 version files then you can replace 1.0 version. See above INSTALLATION guide.
+4. If you have your own changes in existing changes. Then you should diff both versions with any Diff Softwares for ex Kdiff (http://kdiff3.sourceforge.net/)
+Please take a backup of your existing files before overwriting.
+5. I suggest you please do not overwrite new plugin to existing plugin instead of this you should make your changes in new plugin.
+
+
+How to upgrade 1.1 to 1.2 or 2.0
+1. Run queries from yourapp/app/Plugin/Usermgmt/Config/Schema/sql-changes-1.2.txt
+2. If you haven't changed 1.1 version files then you can replace 1.1 version. See above INSTALLATION guide.
+3. If you have your own changes in existing changes. Then you should diff both versions with any Diff Softwares for ex Kdiff (http://kdiff3.sourceforge.net/)
+Please take a backup of your existing files before overwriting.
+4. I suggest you please do not overwrite new plugin to existing plugin instead of this you should make your changes in new plugin.
+
+
+
+If you have any problem please do not hesitate to contact me at chetanvarshney@gmail.com
