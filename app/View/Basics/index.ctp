@@ -1,7 +1,7 @@
   <div class="span9">
           <div class="hero-unit">
-            <h1>Startappedia!</h1>
-            <p>Startappedia is your one-stop-place for your startup, starting from idea to IPO or M&A. Developed by entrepreneurs for entrepreneurs!</p>
+            <h1>xBoard!</h1>
+            <p>xBoard is your one-stop-place for your startup, starting from idea to IPO or M&A. Developed by entrepreneurs for entrepreneurs!</p>
             <p><a class="btn btn-primary btn-large">Get Started &raquo;</a></p>
           </div>
           <div class="row-fluid">

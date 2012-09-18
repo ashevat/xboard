@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <?php echo $this->Html->charset(); ?>
-    <title>Startappedia! By entrepreneurs for entrepreneurs</title>
+    <title>xBoard! By entrepreneurs for entrepreneurs</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -49,7 +49,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Startappedia</a>
+          <a class="brand" href="#">xBoard</a>
           
           <div class="btn-group pull-right">
           <?php if(!empty($user['User']) ){?>
@@ -120,7 +120,7 @@
     
 
       <footer>
-        <p>&copy; Startappedia 2012</p>
+        <p>&copy; xBoard 2012</p>
       </footer>
 
     </div><!--/.fluid-container-->
