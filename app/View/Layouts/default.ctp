@@ -84,21 +84,24 @@
         </div>
       </div>
     </div>
-    
+    <?php 
+    $whereWeAre = "/".$this->params['controller']."/".$this->params['action'];
+    //echo $whereWeAre;
+    ?>
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Basics</li>
-              <li class="active"> <?php echo $this->Html->link('<i class="icon-ok"></i> 
+              <li <?php if($whereWeAre =="/basics/index") echo "class='active'"; ?>> <?php echo $this->Html->link('<i class="icon-ok"></i> 
     Overview', '/basics/', array('escape' => false)); ?></li>
-    		  <li><?php echo $this->Html->link('Team', '/basics/team', array()); ?></li>
-              <li><?php echo $this->Html->link('Name', '/basics/name', array()); ?></li>
-              
-              <li><a href="#">Vision</a></li>
+   			  
+    		  <li <?php if($whereWeAre =="/basics/team") echo "class='active'"; ?>><?php echo $this->Html->link('Team', '/basics/team', array()); ?></li>
+              <li <?php if($whereWeAre =="/basics/name") echo "class='active'"; ?>><?php echo $this->Html->link('Name & Vision', '/basics/name', array()); ?></li>
               <li><a href="#">Description/Profile</a></li>
-              <li><a href="#">Recommended reading</a></li>
+              <li><a href="#">Your Dashboard!</a></li>
+              <li><a href="#">Recommended Reading</a></li>
               <li class="nav-header">Marketing</li>
               <li><a href="#">MVP definition</a></li>
               <li><a href="#">Logo/Graphics</a></li>

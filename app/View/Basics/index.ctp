@@ -1,8 +1,20 @@
   <div class="span9">
           <div class="hero-unit">
-            <h1>xBoard!</h1>
-            <p>xBoard is your one-stop-place for your startup, starting from idea to IPO or M&A. Developed by entrepreneurs for entrepreneurs!</p>
-            <p><a class="btn btn-primary btn-large">Get Started &raquo;</a></p>
+            
+            <div class="row-fluid">
+            	<div class="span6">
+            	<h1>xBoard - Your startup dashboard.</h1>
+		            <p>Building a startup is a complex and hard business. Entrepreneurs need to be visionaries, implementers, marketers and sales-persons. They also need to be savy business men from day one and understand their key success metrix. </p>
+					   <p>xBoard is here to help entrepreneurs become successful by giving them a central place for their startup - helping them focus on the right things, provide guidelines and best practices on marketing, technology and more as well as given them and there investors a single dashboard to measure success. </p>
+		            <p>
+		            <?php echo $this->Html->link('Get Started &raquo;', '/basics/team', array('class'=>"btn btn-primary btn-large",'escape' => false)); ?>
+		            
+		            </p>
+		       </div>
+		       <div class="span4">
+		       <iframe width="480" height="311" src="http://www.powtoon.com/embed/eBd5DMU4PNZ/" frameborder="0" allowfullscreen></iframe>
+		       </div>
+		    </div>
           </div>
           <div class="row-fluid">
             <div class="span4">
