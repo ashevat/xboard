@@ -48,7 +48,7 @@
 					<div class="well">
 						<h2>Tips and tricks</h2>
 
-						<p>bla bla bla</p>
+						<p>What is this the first on the list?</p>
 					</div>
 				</div>
 			</div>
