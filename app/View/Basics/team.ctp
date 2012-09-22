@@ -9,14 +9,15 @@
 			</div>
 			<div class="row-fluid">
 				<div class="span4">
-				<?php if(!empty($user['User']) ){?>
+				<h3>You</h3>
+			<?php if(!empty($user['User']) ){?>
             
               <i class="icon-user"></i> <?php echo $user['User']['first_name']?> <?php echo $user['User']['last_name']?>. Roles: CEO
               <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
 		      <script type="IN/MemberProfile" data-id="http://www.linkedin.com/in/<?php echo $user['User']['username']?>" data-format="inline" data-related="false"></script>
              
             <?php }else{?>
-            	In order to create update your team please connect:
+            	In order to create/update your team please connect:
 				 <li id="linkedin" class="" title='Linkedin Connect' onclick="javascript:login_popup('ldn');return false;">
 					<?php echo $this->Html->image('linked-js-signin.png', array('alt' => 'linked in'))?>
 				</li>
@@ -27,8 +28,21 @@
 				</div>
 
 				<div class="span4">
-					<h3>team mates</h3>
-					
+					<h3>Team mates</h3>
+					<?php
+
+				 
+				    echo $this->Form->create('Comment', array('action' => 'invite'));
+				    echo $this->Form->input('Mate Name');
+				    echo $this->Form->input('Mate Email');
+				    echo $this->Form->input('Mate Role');
+				     if(empty($user['User']) ){
+				    	echo $this->Form->end(array("label"=>__('Login to invite'),"disabled"=>true,"class"=>"btn btn-warning btn-large"));
+					  }else{
+					    echo $this->Form->end(array("label"=>__('Invite'),"class"=>"btn btn-success btn-large"));
+					 }
+				
+				?>
 				</div>
 				<div class="span4">
 					<div class="well">
