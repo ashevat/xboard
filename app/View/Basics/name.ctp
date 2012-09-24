@@ -36,7 +36,7 @@
 				</div>
 
 				<div class="span4">
-					<h3>3) Avilable Domains:</h3>
+					<h3>3) Available Domains:</h3>
 					<div id="loader">
 						<img src="http://domainsbot.blob.core.windows.net/img/loading.gif"
 							alt="Loading..">
