@@ -79,6 +79,8 @@
               <li class="active"><a href="#">Home</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
+              <li><?php echo $this->Html->link('Module Market', '/modules', array()); ?></li>
+              
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -100,19 +102,18 @@
     		  <li <?php if($whereWeAre =="/basics/team") echo "class='active'"; ?>><?php echo $this->Html->link('Team', '/basics/team', array()); ?></li>
               <li <?php if($whereWeAre =="/basics/name") echo "class='active'"; ?>><?php echo $this->Html->link('Name & Vision', '/basics/name', array()); ?></li>
               <li><a href="#">Description/Profile</a></li>
+              <li><a href="#">Logo/Graphics</a></li>
               <li><a href="#">Your Dashboard!</a></li>
               <li><a href="#">Recommended Reading</a></li>
               <li class="nav-header">Marketing</li>
-              <li><a href="#">MVP definition</a></li>
-              <li><a href="#">Logo/Graphics</a></li>
-              <li><a href="#">Tag Line</a></li>
-              <li><a href="#">Pitch</a></li>
-              <li><a href="#">Business cards</a></li>
+              <li><a href="#">Overview</a></li>
+              <li><?php echo $this->Html->link('Pick a medule', '/modules', array()); ?></li>
+               <li class="nav-header">Product</li>
+              <li><a href="#">Overview</a></li>
+              <li><?php echo $this->Html->link('Pick a medule', '/modules', array()); ?></li>
               <li class="nav-header">Development</li>
-              <li><a href="#">Development stack</a></li>
-              <li><a href="#">UX/UI guidelines and resources</a></li>
-              <li><a href="#">Source control </a></li>
-              <li><a href="#">Production environment</a></li>
+              <li><a href="#">Overview</a></li>
+              <li><?php echo $this->Html->link('Pick a medule', '/modules', array()); ?></li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
