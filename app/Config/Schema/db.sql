@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- מארח: localhost
--- זמן ייצור: ספטמבר 24, 2012 at 08:04 PM
+-- זמן ייצור: ספטמבר 25, 2012 at 07:51 PM
 -- גרסת שרת: 5.1.53
 -- גרסת PHP: 5.3.4
 
@@ -34,14 +34,14 @@ CREATE TABLE IF NOT EXISTS `login_tokens` (
   `created` datetime NOT NULL,
   `expires` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- הוצאת מידע עבור טבלה `login_tokens`
 --
 
 INSERT INTO `login_tokens` (`id`, `user_id`, `token`, `duration`, `used`, `created`, `expires`) VALUES
-(6, 1, '59c6cdfbf55fb34534ae2ff47940b208', '2 weeks', 0, '2012-09-24 15:46:27', '2012-10-08 15:46:27');
+(8, 1, 'c7a1c488ca68a5868c3bfd8010be7165', '2 weeks', 0, '2012-09-25 15:30:13', '2012-10-09 15:30:13');
 
 -- --------------------------------------------------------
 
@@ -100,8 +100,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `fb_id`, `fb_access_token`, `twt_id`, `twt_access_token`, `twt_access_secret`, `ldn_id`, `user_group_id`, `username`, `password`, `salt`, `email`, `first_name`, `last_name`, `active`, `email_verified`, `last_login`, `by_admin`, `created`, `modified`) VALUES
-(1, NULL, NULL, NULL, NULL, NULL, NULL, '1', 'admin', 'b2aae31278a1f3a911f84497a7182ee0', '6adf262cff5454313b6f65800a6c9859', 'admin@admin.com', 'Admin', '', '1', 1, '2012-09-24 03:46:26', 0, '2012-09-09 23:11:16', '2012-09-09 23:11:16'),
-(2, NULL, NULL, NULL, NULL, NULL, 'fEXeRPDiFG', '2', 'amirshevat', '185b2d0a2db96f3dce08ff8dd96dcc2e', NULL, NULL, 'Amir', 'Shevat', '1', 1, '2012-09-24 03:45:58', 0, '2012-09-15 04:05:24', '2012-09-15 04:05:24');
+(1, NULL, NULL, NULL, NULL, NULL, NULL, '1', 'admin', 'b2aae31278a1f3a911f84497a7182ee0', '6adf262cff5454313b6f65800a6c9859', 'admin@admin.com', 'Admin', '', '1', 1, '2012-09-25 03:30:13', 0, '2012-09-09 23:11:16', '2012-09-09 23:11:16'),
+(2, NULL, NULL, NULL, NULL, NULL, 'fEXeRPDiFG', '2', 'amirshevat', '185b2d0a2db96f3dce08ff8dd96dcc2e', NULL, NULL, 'Amir', 'Shevat', '1', 1, '2012-09-25 02:36:09', 0, '2012-09-15 04:05:24', '2012-09-15 04:05:24');
 
 -- --------------------------------------------------------
 
@@ -124,14 +124,14 @@ CREATE TABLE IF NOT EXISTS `user_activities` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- הוצאת מידע עבור טבלה `user_activities`
 --
 
 INSERT INTO `user_activities` (`id`, `useragent`, `user_id`, `last_action`, `last_url`, `logout_time`, `user_browser`, `ip_address`, `logout`, `deleted`, `status`, `created`, `modified`) VALUES
-(18, 'b785fc8b8683ace5fa7819dcb8dbfe85', 1, 1348531346, '/xboard/modules', NULL, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.89 Safari/537.1', '127.0.0.1', 0, 0, 1, '2012-09-24 15:46:27', '2012-09-24 16:02:26');
+(21, 'b785fc8b8683ace5fa7819dcb8dbfe85', 1, 1348616998, '/xboard/reports', NULL, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.89 Safari/537.1', '127.0.0.1', 0, 0, 1, '2012-09-25 15:30:03', '2012-09-25 15:49:58');
 
 -- --------------------------------------------------------
 
@@ -200,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `user_group_permissions` (
   `action` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `allowed` tinyint(1) unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=124 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=127 ;
 
 --
 -- הוצאת מידע עבור טבלה `user_group_permissions`
@@ -329,7 +329,10 @@ INSERT INTO `user_group_permissions` (`id`, `user_group_id`, `controller`, `acti
 (120, 3, 'Modules', 'index', 1),
 (121, 1, 'Modules', 'details', 1),
 (122, 2, 'Modules', 'details', 1),
-(123, 3, 'Modules', 'details', 0);
+(123, 3, 'Modules', 'details', 0),
+(124, 1, 'Reports', 'index', 1),
+(125, 2, 'Reports', 'index', 1),
+(126, 3, 'Reports', 'index', 1);
 
 -- --------------------------------------------------------
 
