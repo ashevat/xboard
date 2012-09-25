@@ -55,14 +55,13 @@ class ReportsController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->layout="default";
 	}
 	
 	
 
 	function beforeFilter(){
-		$this->layout="ajax";
 		parent::beforeFilter();
+		$this->set('openActive','menu-dashboard');
 	}
 	
 }

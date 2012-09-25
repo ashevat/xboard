@@ -73,6 +73,7 @@ class ModulesController extends AppController {
 
 	function beforeFilter(){
 		parent::beforeFilter();
+		$this->set('openActive','menu-marketing');
 	}
 	
 }

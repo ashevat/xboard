@@ -14,7 +14,7 @@
 		            </p>
 		       </div>
 		       <div class="span4">
-		       <iframe width="480" height="311" src="http://www.powtoon.com/embed/eBd5DMU4PNZ/" frameborder="0" allowfullscreen></iframe>
+		       <!-- <iframe width="480" height="311" src="http://www.powtoon.com/embed/eBd5DMU4PNZ/" frameborder="0" allowfullscreen></iframe> -->
 		       </div>
 		    </div>
           </div>

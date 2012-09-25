@@ -7,7 +7,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-<script src = "https://domainsbot.blob.core.windows.net/javascript/jquery.domainsbot-1.0.min.js"></script>
     <!-- Le styles -->
     <?php echo $this->Html->css('bootstrap.min.css'); ?>
     <?php echo $this->Html->css('bootstrap-responsive.min.css'); ?>
@@ -25,6 +24,10 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    
+     <?php echo $this->Html->script('excanvas.min'); ?>
+    <?php echo $this->Html->script('jquery.min'); ?>
+  
   </head>
 
   <body>
@@ -94,21 +97,21 @@
     <div id="sidebar">
     <a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
     	<ul>
-    		<li class="active leaf top">
+    		<li class="leaf top" id="menu-home">
     			<?php echo $this->Html->link('<i class="icon icon-home"></i><span>Home</span>', '/', array('escape'=>false)); ?>
     		</li>
-    		<li class="submenu top">
+    		<li class="submenu top"  id="menu-basics">
     			<?php echo $this->Html->link('<i class="icon icon-th-list"></i><span>Basics</span><span class="label">5</span>', '/basics', array('escape'=>false)); ?>
     			<ul class="leaf">
-    				<li><?php echo $this->Html->link('Overview','/basics/overview'); ?></li>
-    				<li><?php echo $this->Html->link('Team','/basics/team'); ?></li>
-    				<li><?php echo $this->Html->link('Name & Doamin','/basics/name'); ?></li>
-    				<li><?php echo $this->Html->link('Description / Profile','/basics/desc'); ?></li>
-    				<li><?php echo $this->Html->link('Recommended reading','/basics/reading'); ?></li>
+    				<li><?php echo $this->Html->link('Overview',array('controller'=>'basics', 'action'=>'overview')); ?></li>
+    				<li><?php echo $this->Html->link('Team',array('controller'=>'basics', 'action'=>'team')); ?></li>
+    				<li><?php echo $this->Html->link('Name & Domain',array('controller'=>'basics', 'action'=>'name')); ?></li>
+    				<li><?php echo $this->Html->link('Description / Profile',array('controller'=>'basics', 'action'=>'desc')); ?></li>
+    				<li><?php echo $this->Html->link('Recommended reading',array('controller'=>'basics', 'action'=>'reading')); ?></li>
     			</ul>
     		</li>
     		
-    		<li class="submenu top">
+    		<li class="submenu top" id="menu-marketing">
     			<?php echo $this->Html->link('<i class="icon icon-th"></i><span class="text">Marketing</span><span class="label">1</span>', '/marketing', array('escape'=>false)); ?>
     			<ul class="leaf">
     				<li><?php echo $this->Html->link('Pick Marketing Modules','/modules'); ?></li>
@@ -118,7 +121,7 @@
     				<li><?php echo $this->Html->link('Business cards','/marketing/business-cards'); ?></li>-->
     			</ul>
     		</li>
-    		<li class="submenu top">
+    		<li class="submenu top"  id="menu-development">
     			<?php echo $this->Html->link('<i class="icon icon-pencil"></i><span class="text">Development</span><span class="label">1</span>', '/development', array('escape'=>false)); ?>
     			<ul class="leaf">
     				<li><?php echo $this->Html->link('Pick Development Modules','/modules'); ?></li>
@@ -130,7 +133,7 @@
     			</ul>
     		</li>
     		
-    		<li class="submenu top">
+    		<li class="submenu top" id="menu-product">
     			<?php echo $this->Html->link('<i class="icon icon-pencil"></i><span class="text">Product Management</span><span class="label">1</span>', '/development', array('escape'=>false)); ?>
     			<ul class="leaf">
     				<li><?php echo $this->Html->link('Pick Product Modules','/modules'); ?></li>
@@ -139,7 +142,7 @@
     			</ul>
     		</li>
     		
-    		<li class="leaf top">
+    		<li class="leaf top"  id="menu-dashboard">
     			<?php echo $this->Html->link('<i class="icon icon-signal"></i><span>Dashboard</span>', '/reports', array('escape'=>false)); ?>
     		</li>
     	</ul>
@@ -171,36 +174,27 @@
 		    </div>
 		</div>  
 	</div>
-  
+  	
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-     <?php echo $this->Html->script('excanvas.min'); ?>
-     <?php echo $this->Html->script('jquery.min'); ?>
-     <script>
-	$(document).ready(function(){
-			
-			$('.leaf > li > a').click(function(e) {
-				e.preventDefault();
-				$('.top').removeClass('active');
-				$(this).closest('.top').addClass('active');
-				$('#xboard-main').load($(this).attr('href'));
-			});
-	});
-   </script>
    
-    <?php echo $this->Html->script('excanvas.min'); ?>
      <?php echo $this->Html->script('jquery.ui.custom'); ?>
      <?php echo $this->Html->script('bootstrap.min'); ?>
+    
      <?php echo $this->Html->script('jquery.flot.min'); ?>
-     <?php echo $this->Html->script('jquery.flot.resize.min'); ?>
-     <?php echo $this->Html->script('jquery.peity.min'); ?>
      <?php echo $this->Html->script('jquery.flot.pie.min'); ?>
-   
+     <?php echo $this->Html->script('jquery.flot.resize.min'); ?>
+     
+       
+     
     <?php echo $this->Html->script('unicorn'); ?>
-    <?php echo $this->Html->script('unicorn.charts'); ?>
-    <?php echo $this->Html->script('unicorn.dashboard'); ?>
-   
-
+    <script src = "https://domainsbot.blob.core.windows.net/javascript/jquery.domainsbot-1.0.min.js"></script>
+      <script type="text/javascript">
+   $(document).ready(function() {
+		$('#<?php echo $openActive?>').addClass('open active');
+		
+	});
+   </script>
   </body>
 </html>

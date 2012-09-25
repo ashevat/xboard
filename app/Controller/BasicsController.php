@@ -55,7 +55,7 @@ class BasicsController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->layout="default";
+		$this->set('openActive','menu-home');
 	}
 	
 	public function name() {
@@ -71,8 +71,9 @@ class BasicsController extends AppController {
 	}
 
 	function beforeFilter(){
-		$this->layout="ajax";
+		
 		parent::beforeFilter();
+		$this->set('openActive','menu-basics');
 	}
 	
 }
