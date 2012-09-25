@@ -65,7 +65,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'appediau',
 		'password' => 'qwerty',
-		'database' => 'appedia',
+		'database' => 'xboard',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);

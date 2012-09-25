@@ -21,14 +21,6 @@ section {
   display: block;
 }
 
-.home{
-      background-image: url("../img/home.jpg");
-      background-repeat: no-repeat;
-      background-position: right;
-      background-size: 100%;
-      background-attachment: fixed;
-      }
-
 audio,
 canvas,
 video {
