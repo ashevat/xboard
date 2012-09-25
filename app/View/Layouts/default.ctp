@@ -140,7 +140,7 @@
     		</li>
     		
     		<li class="leaf top">
-    			<?php echo $this->Html->link('<i class="icon icon-signal"></i><span>Dashboard</span>', '/', array('escape'=>false)); ?>
+    			<?php echo $this->Html->link('<i class="icon icon-signal"></i><span>Dashboard</span>', '/reports', array('escape'=>false)); ?>
     		</li>
     	</ul>
     </div>
@@ -188,13 +188,17 @@
 			});
 	});
    </script>
+   
+    <?php echo $this->Html->script('excanvas.min'); ?>
      <?php echo $this->Html->script('jquery.ui.custom'); ?>
      <?php echo $this->Html->script('bootstrap.min'); ?>
      <?php echo $this->Html->script('jquery.flot.min'); ?>
      <?php echo $this->Html->script('jquery.flot.resize.min'); ?>
      <?php echo $this->Html->script('jquery.peity.min'); ?>
+     <?php echo $this->Html->script('jquery.flot.pie.min'); ?>
    
     <?php echo $this->Html->script('unicorn'); ?>
+    <?php echo $this->Html->script('unicorn.charts'); ?>
     <?php echo $this->Html->script('unicorn.dashboard'); ?>
    
 
