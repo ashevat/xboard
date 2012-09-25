@@ -51,7 +51,7 @@
             </ul>
           </div><!--/.nav-collapse -->
     	<ul class="nav btn-group">
-    		<?php if (!$user['User']) { ?>
+    		<?php if (!isset($user['User'])) { ?>
 				<li class="btn btn-inverse">
 	      			<a href="#" title="">
 	      				<i class="icon icon-user"></i>
@@ -86,7 +86,7 @@
 				</a>
       		</li>
       		<li class="btn btn-mini btn-inverse">
-      			<?php echo $this->Html->link('<i class="icon icon-share-alt"></i><span class="text">Logout</span>', '/logout', array('escape'=>false)); ?>
+      			<?php echo $this->Html->link('<i class="icon icon-off"></i><span class="text">Logout</span>', '/logout', array('escape'=>false)); ?>
       		</li>
     		<?php } ?>
       	</ul>
@@ -95,12 +95,12 @@
     <div id="sidebar">
     <a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
     	<ul>
-    		<li class="active">
+    		<li class="active leaf top">
     			<?php echo $this->Html->link('<i class="icon icon-home"></i><span>Dashboard</span>', '/', array('escape'=>false)); ?>
     		</li>
-    		<li class="submenu">
+    		<li class="submenu top">
     			<?php echo $this->Html->link('<i class="icon icon-th-list"></i><span>Basics</span><span class="label">5</span>', '/basics', array('escape'=>false)); ?>
-    			<ul>
+    			<ul class="leaf">
     				<li><?php echo $this->Html->link('Overview','/basics/overview'); ?></li>
     				<li><?php echo $this->Html->link('Team','/basics/team'); ?></li>
     				<li><?php echo $this->Html->link('Name & vision','/basics/name'); ?></li>
@@ -108,9 +108,9 @@
     				<li><?php echo $this->Html->link('Recommended reading','/basics/reading'); ?></li>
     			</ul>
     		</li>
-    		<li class="submenu">
+    		<li class="submenu top">
     			<?php echo $this->Html->link('<i class="icon icon-th"></i><span class="text">Marketing</span><span class="label">5</span>', '/marketing', array('escape'=>false)); ?>
-    			<ul>
+    			<ul class="leaf">
     				<li><?php echo $this->Html->link('MVP Definition','/marketing/mvp'); ?></li>
     				<li><?php echo $this->Html->link('Logo / Graphics','/marketing/assets'); ?></li>
     				<li><?php echo $this->Html->link('Tag line','/marketing/tagline'); ?></li>
@@ -118,9 +118,9 @@
     				<li><?php echo $this->Html->link('Business cards','/marketing/business-cards'); ?></li>
     			</ul>
     		</li>
-    		<li class="submenu">
+    		<li class="submenu top">
     			<?php echo $this->Html->link('<i class="icon icon-pencil"></i><span class="text">Development</span><span class="label">4</span>', '/development', array('escape'=>false)); ?>
-    			<ul>
+    			<ul class="leaf">
     				<li><?php echo $this->Html->link('Development Stack','/development/stack'); ?></li>
     				<li><?php echo $this->Html->link('UI/UX guidelines and resources','/development/uiux'); ?></li>
     				<li><?php echo $this->Html->link('Source control','/development/scm'); ?></li>
@@ -145,17 +145,11 @@
 	   	</div>
 	   	<div id="breadcrumb">
 	   		<a class="tip-bottom" href="#" data-original-title="Go to Home">
-<i class="icon-home"></i>
-Home
-</a>
-<a class="current" href="#">Dashboard</a>
+				<i class="icon-home"></i>Home</a>
+			<a class="current" href="#">Dashboard</a>
 	   	</div>
-	   	<div class="container-fluid">
-	   		<div class="row-fluid">
-	   			<div class="Span12">
-	   				<?php echo $this->fetch('content'); ?>
-	   			</div>
-	   		</div>
+	   	<div class="container-fluid" id="xboard-main">
+			<?php echo $this->fetch('content'); ?>
 		    <div class="row-fluid">
 		    	<div id="footer">
 		    		<p>&copy; xBoard 2012</p>
@@ -163,12 +157,23 @@ Home
 		    </div>
 		</div>  
 	</div>
-
+  
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
      <?php echo $this->Html->script('excanvas.min'); ?>
      <?php echo $this->Html->script('jquery.min'); ?>
+     <script>
+	$(document).ready(function(){
+			
+			$('.leaf > li > a').click(function(e) {
+				e.preventDefault();
+				$('.top').removeClass('active');
+				$(this).closest('.top').addClass('active');
+				$('#xboard-main').load($(this).attr('href'));
+			});
+	});
+   </script>
      <?php echo $this->Html->script('jquery.ui.custom'); ?>
      <?php echo $this->Html->script('bootstrap.min'); ?>
      <?php echo $this->Html->script('jquery.flot.min'); ?>
@@ -177,7 +182,6 @@ Home
    
     <?php echo $this->Html->script('unicorn'); ?>
     <?php echo $this->Html->script('unicorn.dashboard'); ?>
-    
    
 
   </body>

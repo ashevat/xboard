@@ -55,7 +55,7 @@ class BasicsController extends AppController {
  * @return void
  */
 	public function index() {
-		
+		$this->layout="default";
 	}
 	
 	public function name() {
@@ -71,6 +71,7 @@ class BasicsController extends AppController {
 	}
 
 	function beforeFilter(){
+		$this->layout="ajax";
 		parent::beforeFilter();
 	}
 	

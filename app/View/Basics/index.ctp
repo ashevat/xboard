@@ -1,4 +1,5 @@
-  <div class="span9">
+ <div class="row-fluid">
+  <div class="span12">
           <div class="hero-unit">
             
             <div class="row-fluid">
@@ -52,4 +53,4 @@
             </div><!--/span-->
           </div><!--/row-->
         </div><!--/span-->
-      </div><!--/row-->
+</div>
