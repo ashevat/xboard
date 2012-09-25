@@ -5,7 +5,17 @@
 			<div class="well">
 				<h2>Step 1: Assemble a team</h2>
 
-				<p>bla bla bla </p>
+	<BR><BR><p>Building a scalable business is a lot more than having a great idea. More often than not, its all about the people. Whether you plan on getting funded or bootstrapping your new initiative, you cant do it alone. A kickass team is the secret sauce that makes a company succeed.
+
+<BR><BR>Building the right team is more than just finding the smartest, most qualified people around and waiting for them to get the job done. It's also about <b>balance</b>. You'll need to balance your team in a way that complement your strengths and bring unique talents and experience to the table. 
+
+<BR><BR>Every team needs at least two key players: a <b>technical guru</b> - someone who can build the product and a <b>business driver</b> - someone who understands the ecosystem - and how it works, knows the key players and has a keen understanding of how revenue can be generated. Oftentimes, core teams also consists of a <b>product lead</b> - someone who understands the market and has a deep understanding of what it takes to build a successful winning product. Without these players, you will have a much lower chance of success. 
+
+<BR><BR>Relevant experience is extremely important, people who worked in startups environments (as opposed to corporates), who understand the work and dedication needed, people who are hungry for success and are willing to get their hands dirty are the ones that will help you get your company of the ground.
+
+<BR><BR>Before you start building your team you should assess your strengths and weaknesses. If you are a technology guru and are going to be the company's CTO, You're better off finding someone strong in tactical execution. If your role in the new company will focus mainly business execution, you're better of finding a strong technical lead to compliment you. 
+
+<BR><BR>Just remember that your team will be your greatest competitive advantage. Products and markets can change, but a great team will figure out a way to win in any situation</p>
 			</div>
 			<div class="row-fluid">
 				<div class="span4">
