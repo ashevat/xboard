@@ -66,6 +66,9 @@ class BasicsController extends AppController {
 		
 	}
 	
+	public function overview() {
+	
+	}
 
 	function beforeFilter(){
 		parent::beforeFilter();
