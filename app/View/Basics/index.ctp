@@ -3,8 +3,9 @@
             
             <div class="row-fluid">
             	<div class="span6">
-            	<h1>xBoard - Your startup dashboard.</h1>
-		            <p>Building a startup is a complex and hard business. Entrepreneurs need to be visionaries, implementers, marketers and sales-persons. They also need to be savy business men from day one and understand their key success metrix. </p>
+            	<h1>xBoard</h1>
+            	<h2>Your startup dashboard</h2>
+		            <p>Building a startup is a complex business. Entrepreneurs need to be visionaries, implementers, marketers and sales-persons. They also need to be savy business men from day one and understand their key success metrix. </p>
 					   <p>xBoard is here to help entrepreneurs become successful by giving them a central place for their startup - helping them focus on the right things, provide guidelines and best practices on marketing, technology and more as well as given them and there investors a single dashboard to measure success. </p>
 		            <p>
 		            <?php echo $this->Html->link('Get Started &raquo;', '/basics/team', array('class'=>"btn btn-primary btn-large",'escape' => false)); ?>
