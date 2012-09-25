@@ -53,10 +53,9 @@
     	<ul class="nav btn-group">
     		<?php if (!isset($user['User'])) { ?>
 				<li class="btn btn-inverse">
-	      			<a href="#" title="">
-	      				<i class="icon icon-user"></i>
-	      				<span class="text">Anonymous</span>
-	      			</a>
+	      			<?php echo $this->Html->link('<i class="icon icon-user"></i><span class="text">Anonymous</span>','/login', array('escape'=>false)); ?>
+	      				
+	      			
 	      		</li>
     		<?php } else { ?>
     		<li class="btn btn-inverse">
@@ -96,37 +95,52 @@
     <a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
     	<ul>
     		<li class="active leaf top">
-    			<?php echo $this->Html->link('<i class="icon icon-home"></i><span>Dashboard</span>', '/', array('escape'=>false)); ?>
+    			<?php echo $this->Html->link('<i class="icon icon-home"></i><span>Home</span>', '/', array('escape'=>false)); ?>
     		</li>
     		<li class="submenu top">
     			<?php echo $this->Html->link('<i class="icon icon-th-list"></i><span>Basics</span><span class="label">5</span>', '/basics', array('escape'=>false)); ?>
     			<ul class="leaf">
     				<li><?php echo $this->Html->link('Overview','/basics/overview'); ?></li>
     				<li><?php echo $this->Html->link('Team','/basics/team'); ?></li>
-    				<li><?php echo $this->Html->link('Name & vision','/basics/name'); ?></li>
+    				<li><?php echo $this->Html->link('Name & Doamin','/basics/name'); ?></li>
     				<li><?php echo $this->Html->link('Description / Profile','/basics/desc'); ?></li>
     				<li><?php echo $this->Html->link('Recommended reading','/basics/reading'); ?></li>
     			</ul>
     		</li>
+    		
     		<li class="submenu top">
-    			<?php echo $this->Html->link('<i class="icon icon-th"></i><span class="text">Marketing</span><span class="label">5</span>', '/marketing', array('escape'=>false)); ?>
+    			<?php echo $this->Html->link('<i class="icon icon-th"></i><span class="text">Marketing</span><span class="label">1</span>', '/marketing', array('escape'=>false)); ?>
     			<ul class="leaf">
-    				<li><?php echo $this->Html->link('MVP Definition','/marketing/mvp'); ?></li>
-    				<li><?php echo $this->Html->link('Logo / Graphics','/marketing/assets'); ?></li>
+    				<li><?php echo $this->Html->link('Pick Marketing Modules','/modules'); ?></li>
+    				<!--  <li><?php echo $this->Html->link('Logo / Graphics','/marketing/assets'); ?></li>
     				<li><?php echo $this->Html->link('Tag line','/marketing/tagline'); ?></li>
     				<li><?php echo $this->Html->link('Pitch','/marketing/mvp'); ?></li>
-    				<li><?php echo $this->Html->link('Business cards','/marketing/business-cards'); ?></li>
+    				<li><?php echo $this->Html->link('Business cards','/marketing/business-cards'); ?></li>-->
     			</ul>
     		</li>
     		<li class="submenu top">
-    			<?php echo $this->Html->link('<i class="icon icon-pencil"></i><span class="text">Development</span><span class="label">4</span>', '/development', array('escape'=>false)); ?>
+    			<?php echo $this->Html->link('<i class="icon icon-pencil"></i><span class="text">Development</span><span class="label">1</span>', '/development', array('escape'=>false)); ?>
     			<ul class="leaf">
-    				<li><?php echo $this->Html->link('Development Stack','/development/stack'); ?></li>
+    				<li><?php echo $this->Html->link('Pick Development Modules','/modules'); ?></li>
+    				<!--  <li><?php echo $this->Html->link('Development Stack','/development/stack'); ?></li>
     				<li><?php echo $this->Html->link('UI/UX guidelines and resources','/development/uiux'); ?></li>
     				<li><?php echo $this->Html->link('Source control','/development/scm'); ?></li>
-    				<li><?php echo $this->Html->link('Production environment','/development/production'); ?></li>
+    				<li><?php echo $this->Html->link('Production environment','/development/production'); ?></li>-->
     				
     			</ul>
+    		</li>
+    		
+    		<li class="submenu top">
+    			<?php echo $this->Html->link('<i class="icon icon-pencil"></i><span class="text">Product Management</span><span class="label">1</span>', '/development', array('escape'=>false)); ?>
+    			<ul class="leaf">
+    				<li><?php echo $this->Html->link('Pick Product Modules','/modules'); ?></li>
+    				
+    				
+    			</ul>
+    		</li>
+    		
+    		<li class="leaf top">
+    			<?php echo $this->Html->link('<i class="icon icon-signal"></i><span>Dashboard</span>', '/', array('escape'=>false)); ?>
     		</li>
     	</ul>
     </div>
