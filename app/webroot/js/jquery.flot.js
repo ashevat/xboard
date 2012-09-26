@@ -704,6 +704,7 @@
         }
 
         function getCanvasDimensions() {
+        	
             canvasWidth = placeholder.width();
             canvasHeight = placeholder.height();
             
@@ -730,10 +731,11 @@
         }
         
         function setupCanvases() {
+        	
             var reused,
                 existingCanvas = placeholder.children("canvas.base"),
                 existingOverlay = placeholder.children("canvas.overlay");
-
+            
             if (existingCanvas.length == 0 || existingOverlay == 0) {
                 // init everything
                 
@@ -769,7 +771,9 @@
 
             if (reused) {
                 // run shutdown in the old plot object
-                placeholder.data("plot").shutdown();
+            	if (placeholder.data("plot")) {
+            		placeholder.data("plot").shutdown();
+            	}
 
                 // reset reused canvases
                 plot.resize();

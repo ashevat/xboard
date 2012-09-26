@@ -182,7 +182,7 @@
      <?php echo $this->Html->script('jquery.ui.custom'); ?>
      <?php echo $this->Html->script('bootstrap.min'); ?>
     
-     <?php echo $this->Html->script('jquery.flot.min'); ?>
+     <?php echo $this->Html->script('jquery.flot'); ?>
      <?php echo $this->Html->script('jquery.flot.pie.min'); ?>
      <?php echo $this->Html->script('jquery.flot.resize.min'); ?>
      
