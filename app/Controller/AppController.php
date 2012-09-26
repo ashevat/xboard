@@ -33,7 +33,7 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 	
-	public $uses = array('Usermgmt.User', 'Usermgmt.UserGroup');
+	public $uses = array('Usermgmt.User', 'Usermgmt.UserGroup','Startup');
 	
 	var $helpers = array('Form', 'Html', 'Session', 'Js', 'Usermgmt.UserAuth', 'Usermgmt.Image');
 		public $components = array('Session','RequestHandler', 'Usermgmt.UserAuth');
@@ -45,7 +45,17 @@ class AppController extends Controller {
 			$user = $this->User->read(null, $userId);
 			$user['UserGroup']['name']=$this->UserGroup->getGroupsByIds($user['User']['user_group_id']);
 			$this->set('user', $user);
+			if(isset($user['User'])){
+			$starupId = $this->Session->read('User.'.$userId.'.startup_id');
+				if($starupId){
+					$startup  = $this->Startup->read(null, $starupId);
+					$this->set('startup', $startup);
+				}
+			}
+			
 		}
+		
+		
 		private function userAuth(){
 			$this->UserAuth->beforeFilter($this);
 		}

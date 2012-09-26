@@ -95,9 +95,24 @@
 						<div class="widget-content">
 							<?php
 							echo $this->Form->create('Comment', array('action' => 'invite'));
-							echo $this->Form->input('Mate Name');
-							echo $this->Form->input('Mate Email');
-							echo $this->Form->input('Mate Role');
+							if (!isset($user['User'])) { 
+								echo $this->Form->input('Mate Name', array('disabled' => true,"placeholder"=>"Please login to invite"));
+								echo $this->Form->input('Mate Email', array('disabled' => true,"placeholder"=>"Please login to invite"));
+								echo $this->Form->input('Mate Role');
+							 }else{
+							 	echo $this->Form->input('Mate Name', array("placeholder"=>"Mark Zuckerberg"));
+								echo $this->Form->input('Mate Email', array("placeholder"=>"mark@gmail.com"));
+								$options = array();
+								foreach ($roles as $role){
+									
+									$key = $role["Role"]["id"];
+									$options[$key] = $role["Role"]["name"];
+								}
+								
+								echo $this->Form->select('Mate Role', $options, array("class"=>"chzn-done", 'default' => '6'));
+								
+								
+							 }
 							if(empty($user['User']) ){
 								echo $this->Form->end(array("label"=>__('Login to invite'),"disabled"=>true,"class"=>"btn btn-warning btn-large"));
 							}else{

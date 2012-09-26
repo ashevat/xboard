@@ -46,7 +46,7 @@ class BasicsController extends AppController {
  *
  * @var array
  */
-	public $uses = array();
+	public $uses = array("Role");
 
 /**
  * Displays a view
@@ -63,7 +63,8 @@ class BasicsController extends AppController {
 	}
 	
 	public function team() {
-		
+		$roles  = $this->Role->find('all');
+		$this->set('roles', $roles);
 	}
 	
 	public function overview() {

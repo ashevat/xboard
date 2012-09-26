@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <?php echo $this->Html->charset(); ?>
-    <title><?php echo $title_for_layout.' | xBoard';?></title>
+    <title><?php echo $title_for_layout.' | StartHub';?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -33,7 +33,7 @@
   <body>
 	<div id="header">
 		<h1>
-			<a href="/">xBoard</a>
+			<a href="/">StartHub</a>
 		</h1>
 	</div>
 	<div id="search">
@@ -154,7 +154,7 @@
     ?>
     <div id="content">
 		<div id="content-header">
-	   		<h1>XBoard</h1>
+	   		<h1>StartHub - {Great Ideas Starts Here}</h1>
 	   		<div class="btn-group">
 	   			<a class="btn btn-large tip-bottom" data-original-title="Files"><i class="icon-file"></i></a>
 	   			<a class="btn btn-large tip-bottom" data-original-title="Users"><i class="icon-user"></i></a>
