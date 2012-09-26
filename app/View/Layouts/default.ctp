@@ -149,7 +149,7 @@
     </div>
     
     <?php 
-    $whereWeAre = "/".$this->params['controller']."/".$this->params['action'];
+    $whereWeAre = $this->here; 
     //echo $whereWeAre;
     ?>
     <div id="content">
@@ -193,7 +193,7 @@
       <script type="text/javascript">
    $(document).ready(function() {
 		$('#<?php echo $openActive?>').addClass('open active');
-		
+		$('ul.leaf li a[href="<?php echo $this->here; ?>"]').parent().addClass('active');
 	});
    </script>
   </body>
