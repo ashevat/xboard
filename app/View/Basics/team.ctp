@@ -32,9 +32,12 @@
 								Naamani [CGI]</a><br />
 							<hr />
 							<h6>Invited</h6>
-							<i class="icon-hand-up"></i> <a href="#">Jonny Boy [Role]</a><br />
-							<i class="icon-hand-up"></i> <a href="#">Tarzan Graystock [Role]</a><br />
-							<i class="icon-hand-up"></i> <a href="#">Michael Benson [Role]</a><br />
+							<?php if(isset($invites)){?>
+								<?php foreach ($invites as $invitation){?>
+								<i class="icon-hand-up"></i> <a href="#"><?php echo $invitation["StartupInvites"]["invitee_name"]?></a><br />
+								<?php }?>
+							<?php }?>	
+							
 						</div>
 					</div>
 				</article>
@@ -94,7 +97,7 @@
 						</div>
 						<div class="widget-content">
 							<?php
-							echo $this->Form->create('Comment', array('action' => 'invite'));
+							echo $this->Form->create('Basic', array('action' => 'team'));
 							if (!isset($user['User'])) { 
 								echo $this->Form->input('Mate Name', array('disabled' => true,"placeholder"=>"Please login to invite"));
 								echo $this->Form->input('Mate Email', array('disabled' => true,"placeholder"=>"Please login to invite"));

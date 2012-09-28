@@ -33,7 +33,10 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 	
-	public $uses = array('Usermgmt.User', 'Usermgmt.UserGroup','Startup');
+	public $uses = array('Usermgmt.User', 'Usermgmt.UserGroup','Startup', 'StartupUsers');
+	
+	public $startup;
+	public $user;
 	
 	var $helpers = array('Form', 'Html', 'Session', 'Js', 'Usermgmt.UserAuth', 'Usermgmt.Image');
 		public $components = array('Session','RequestHandler', 'Usermgmt.UserAuth');
@@ -43,13 +46,35 @@ class AppController extends Controller {
 			
 			$userId = $this->UserAuth->getUserId();
 			$user = $this->User->read(null, $userId);
+			$this->user = $user;
 			$user['UserGroup']['name']=$this->UserGroup->getGroupsByIds($user['User']['user_group_id']);
 			$this->set('user', $user);
 			if(isset($user['User'])){
 			$starupId = $this->Session->read('User.'.$userId.'.startup_id');
+			echo "got here".$starupId;
+			
+				if(!$starupId){
+					// find startup
+					$startupRef = $this->StartupUsers->find('first', array(
+        				'conditions' => array('StartupUsers.user_id' => $userId)
+    				));
+    				
+    				if(!empty($startupRef)){
+    					$starupId = $startupRef["StartupUsers"]["startup_id"];	
+    					$this->Session->write('User.'.$userId.'.startup_id',$starupId );
+    				}
+				}
+				
 				if($starupId){
 					$startup  = $this->Startup->read(null, $starupId);
-					$this->set('startup', $startup);
+					if(!empty($startup)){
+						$this->set('startup', $startup);
+						$this->startup = $startup;
+					}else{
+						// startup was deleted
+						$this->Session->delete('User.'.$userId.'.startup_id');
+					}
+					
 				}
 			}
 			

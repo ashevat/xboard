@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 25, 2012 at 11:05 PM
+-- Generation Time: Sep 28, 2012 at 11:44 PM
 -- Server version: 5.1.53
 -- PHP Version: 5.3.4
 
@@ -28,14 +28,14 @@ CREATE TABLE IF NOT EXISTS `login_tokens` (
   `created` datetime NOT NULL,
   `expires` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `login_tokens`
 --
 
 INSERT INTO `login_tokens` (`id`, `user_id`, `token`, `duration`, `used`, `created`, `expires`) VALUES
-(9, 1, '1a0a5d920b9afbcf5f55e07ed36a4b47', '2 weeks', 0, '2012-09-25 18:23:12', '2012-10-09 18:23:12');
+(12, 1, 'eea1bc9d4904ecf0a0f1eb535bbaafa3', '2 weeks', 0, '2012-09-26 10:16:34', '2012-10-10 10:16:34');
 
 -- --------------------------------------------------------
 
@@ -73,10 +73,35 @@ CREATE TABLE IF NOT EXISTS `startups` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `startups`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `startup_invites`
+--
+
+CREATE TABLE IF NOT EXISTS `startup_invites` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `startup_id` int(12) NOT NULL,
+  `inviter_id` int(12) NOT NULL,
+  `invitee_email` varchar(256) NOT NULL,
+  `invitee_name` varchar(256) NOT NULL,
+  `invitee_role_id` int(10) NOT NULL,
+  `active` tinyint(1) NOT NULL,
+  `accepted` tinyint(1) NOT NULL DEFAULT '0',
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+
+--
+-- Dumping data for table `startup_invites`
 --
 
 
@@ -90,36 +115,14 @@ CREATE TABLE IF NOT EXISTS `startup_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `startup_id` int(12) NOT NULL,
   `user_id` int(12) NOT NULL,
+  `default` tinyint(1) NOT NULL DEFAULT '1',
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `startup_users`
---
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `team_invites`
---
-
-CREATE TABLE IF NOT EXISTS `team_invites` (
-  `id` int(11) NOT NULL,
-  `inviter_id` int(12) NOT NULL,
-  `invitee_email` varchar(256) NOT NULL,
-  `invitee_name` varchar(256) NOT NULL,
-  `invitee_role_id` int(10) NOT NULL,
-  `active` tinyint(1) NOT NULL,
-  `accepted` tinyint(1) NOT NULL DEFAULT '0',
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `team_invites`
 --
 
 
@@ -180,8 +183,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `fb_id`, `fb_access_token`, `twt_id`, `twt_access_token`, `twt_access_secret`, `ldn_id`, `user_group_id`, `username`, `password`, `salt`, `email`, `first_name`, `last_name`, `active`, `email_verified`, `last_login`, `by_admin`, `created`, `modified`) VALUES
-(1, NULL, NULL, NULL, NULL, NULL, NULL, '1', 'admin', 'b2aae31278a1f3a911f84497a7182ee0', '6adf262cff5454313b6f65800a6c9859', 'admin@admin.com', 'Admin', '', '1', 1, '2012-09-25 06:23:12', 0, '2012-09-09 23:11:16', '2012-09-09 23:11:16'),
-(2, NULL, NULL, NULL, NULL, NULL, 'fEXeRPDiFG', '2', 'amirshevat', '185b2d0a2db96f3dce08ff8dd96dcc2e', NULL, NULL, 'Amir', 'Shevat', '1', 1, '2012-09-25 02:36:09', 0, '2012-09-15 04:05:24', '2012-09-15 04:05:24');
+(1, NULL, NULL, NULL, NULL, NULL, NULL, '1', 'admin', 'b2aae31278a1f3a911f84497a7182ee0', '6adf262cff5454313b6f65800a6c9859', 'admin@admin.com', 'Admin', '', '1', 1, '2012-09-26 10:16:33', 0, '2012-09-09 23:11:16', '2012-09-09 23:11:16'),
+(2, NULL, NULL, NULL, NULL, NULL, 'fEXeRPDiFG', '2', 'amirshevat', '185b2d0a2db96f3dce08ff8dd96dcc2e', NULL, NULL, 'Amir', 'Shevat', '1', 1, '2012-09-28 07:27:10', 0, '2012-09-15 04:05:24', '2012-09-15 04:05:24');
 
 -- --------------------------------------------------------
 
@@ -204,14 +207,14 @@ CREATE TABLE IF NOT EXISTS `user_activities` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data for table `user_activities`
 --
 
 INSERT INTO `user_activities` (`id`, `useragent`, `user_id`, `last_action`, `last_url`, `logout_time`, `user_browser`, `ip_address`, `logout`, `deleted`, `status`, `created`, `modified`) VALUES
-(21, 'b785fc8b8683ace5fa7819dcb8dbfe85', 1, 1348627920, '/xboard/assets/ico/favicon.ico', NULL, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.89 Safari/537.1', '127.0.0.1', 0, 0, 1, '2012-09-25 15:30:03', '2012-09-25 18:52:00');
+(27, 'e48e49917ecc1bfd65bbdd0c820caa77', 2, 1348889348, '/xboard/basics/team', NULL, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.4 (KHTML, like Gecko) Chrome/22.0.1229.79 Safari/537.4', '127.0.0.1', 0, 0, 1, '2012-09-28 19:25:30', '2012-09-28 19:29:08');
 
 -- --------------------------------------------------------
 
@@ -280,7 +283,7 @@ CREATE TABLE IF NOT EXISTS `user_group_permissions` (
   `action` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `allowed` tinyint(1) unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=127 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=130 ;
 
 --
 -- Dumping data for table `user_group_permissions`
@@ -412,7 +415,10 @@ INSERT INTO `user_group_permissions` (`id`, `user_group_id`, `controller`, `acti
 (123, 3, 'Modules', 'details', 0),
 (124, 1, 'Reports', 'index', 1),
 (125, 2, 'Reports', 'index', 1),
-(126, 3, 'Reports', 'index', 1);
+(126, 3, 'Reports', 'index', 1),
+(127, 1, 'Basics', 'overview', 1),
+(128, 2, 'Basics', 'overview', 1),
+(129, 3, 'Basics', 'overview', 1);
 
 -- --------------------------------------------------------
 
