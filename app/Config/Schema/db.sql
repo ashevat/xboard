@@ -482,3 +482,67 @@ INSERT INTO `user_settings` (`id`, `name`, `name_public`, `value`, `type`) VALUE
 (40, 'imgDir', 'Enter Image directory name where users profile photos will be uploaded. This directory should be in webroot/img directory', 'umphotos', 'input'),
 (41, 'QRDN', 'Increase this number by 1 every time if you made any changes in CSS or JS file', '12345678', 'input'),
 (42, 'cookieName', 'Please enter cookie name for your site which is used to login user automatically for remember me functionality', 'UMPremiumCookie', 'input');
+
+
+
+
+SET time_zone = "+00:00";
+
+
+--
+-- Table structure for table `plugins`
+--
+
+CREATE TABLE IF NOT EXISTS `plugins` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `version` float NOT NULL,
+  `category` int(11) NOT NULL,
+  `tag_line` varchar(100) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `author` int(11) NOT NULL,
+  `expiration` date NOT NULL,
+  `cost` float NOT NULL,
+  `currancy` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`),
+  UNIQUE KEY `name` (`name`),
+  UNIQUE KEY `name_2` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=63 ;
+
+--
+-- Table structure for table `plugin_authors`
+--
+
+CREATE TABLE IF NOT EXISTS `plugin_authors` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `info` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+
+
+
+--
+-- Table structure for table `plugin_categories`
+--
+
+CREATE TABLE IF NOT EXISTS `plugin_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+
+--
+-- Table structure for table `user_plugins`
+--
+
+CREATE TABLE IF NOT EXISTS `user_plugins` (
+  `user_id` int(11) NOT NULL,
+  `plugin_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
