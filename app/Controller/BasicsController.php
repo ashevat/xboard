@@ -36,6 +36,8 @@ class BasicsController extends AppController {
     
     public $defaultStartupName = "Great Idea";
     Public $defaultRole = 5;
+    
+    private $inviteSalt = "54235646fgbdfghfghdf36h5y53h53h35jmn45jm";
 
 /**
  * Controller name
@@ -65,6 +67,78 @@ class BasicsController extends AppController {
 		
 	}
 	
+	
+	public function invited($invitationId, $hash){
+		$intiveIdHash = md5($invitationId.$this->inviteSalt);
+		if($intiveIdHash != $hash){
+			//looks like a hack
+			$this->set('inviteStatus', -1);
+			$this->set('inviteStatusText', "Invalid Invitation");
+		}else{
+			$invite = $this->StartupInvites->find('first', array(
+        				'conditions' => array('StartupInvites.id' => $invitationId)
+    				));
+    		if(isset($invite) && !empty($invite) &&  $invite["StartupInvites"]["active"]){
+				if(isset($this->user['User'])){
+					
+					if(!$invite["StartupInvites"]["accepted"]){
+						$starupId = $invite["StartupInvites"]["startup_id"];
+						$startup  = $this->Startup->read(null,$starupId );
+						$userId = $this->UserAuth->getUserId();
+						
+						if(!empty($startup)){
+							// all os well!!!
+							$this->Session->write('User.'.$userId.'.startup_id',$starupId );
+							$this->set('startup', $startup);
+							$this->startup = $startup;
+							
+							$startup_user = array(
+								"StartupUsers"=>array(
+									"startup_id" => $this->Startup->id,
+									"user_id" => $this->UserAuth->getUserId(),
+									"role_id" => $invite["StartupInvites"]["invitee_role_id"],
+								)
+							);
+					
+							$this->StartupUsers->create();
+							$this->StartupUsers->save($startup_user);
+							
+							// mark invitation as accepted 
+							$invite["StartupInvites"]["accepted"] = 1;
+							$this->StartupInvites->create();
+							$this->StartupInvites->save($invite);
+							
+							$this->set('inviteStatus', 1);
+							
+						}else{
+							// startup not found
+							$this->set('inviteStatus', -3);
+							$this->set('inviteStatusText', "Invalid Startup Invitation");
+						}
+							
+					}else{
+						$this->set('inviteStatus', -4);
+						$this->set('inviteStatusText', "Invitation already accepted");
+					}
+					
+				}else{
+					$this->set('inviteStatus', 2);
+				}
+    			
+    			
+    		}else{
+    			// bad invite
+    			$this->set('inviteStatus', -2);
+    			$this->set('inviteStatusText', "Invalid Invitation state".isset($invite));
+    		}		
+    				
+			
+		}
+		
+		
+		
+	}
+	
 	public function team() {
 		if (!empty($this->data)) {
 			$mateName = $this->data["Basic"]["Mate Name"];
@@ -90,16 +164,18 @@ class BasicsController extends AppController {
 			$this->StartupInvites->save($invite);
 			
 			$intiveId  = $this->StartupInvites->id;
-			$intiveIdHash = md5($intiveId."44364634612116ggg");
+			$intiveIdHash = md5($intiveId.$this->inviteSalt);
 			// send email invite
-			$email = new CakeEmail();
-			$email->from(array('me@example.com' => 'My Site'));
+			$email = new CakeEmail("gmail");
+			$email->from(array('starthub1@gmail.com' => 'StartHub Support'));
 			$email->emailFormat('html');
 			$email->template('invitemate', 'invites');
-			$email->viewVars(array('link' => "http://xboard.co/basic/team/invite/".$intiveId."/".$intiveIdHash));
+			$email->viewVars(array('link' => "http://xboard.co/basics/invited/".$intiveId."/".$intiveIdHash));
+			$email->viewVars(array('invitee_name' => $mateName));
+			$email->viewVars(array('inviter_name' => $this->user['User']['first_name']));
 			$email->to($mateEmail);
 			$email->subject('Join our startup at StartHub');
-			//$email->send();
+			$email->send();
 			
 			$this->data = null;
 		}
