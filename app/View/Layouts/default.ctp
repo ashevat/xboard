@@ -63,7 +63,7 @@
     		<?php } else { ?>
     		<li class="btn btn-inverse">
       			<a href="#" title="">
-      				<i class="icon icon-user"></i>
+      				<img src="<?php echo $this->Image->resize("img/".IMG_DIR, $user["UserDetail"]["photo"], 16, null, true) ?>"/> 
       				<span class="text"><?php echo  $user['User']['first_name']?></span>
       			</a>
       		</li>

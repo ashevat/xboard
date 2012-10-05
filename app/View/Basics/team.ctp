@@ -26,10 +26,12 @@
 						</div>
 						<div class="widget-content">
 							<h6>Active</h6>
-							<i class="icon-thumbs-up"></i> <a href="#">Amir Shevat [Co-CEO]</a><br />
-							<i class="icon-thumbs-up"></i> <a href="#">Yuval Lubowitch
-								[Co-CEO]</a><br /> <i class="icon-thumbs-up"></i> <a href="#">Nimo
-								Naamani [CGI]</a><br />
+							
+							<?php if(isset($team)){?>
+								<?php foreach ($team as $member){?>
+								<i class="icon-thumbs-up"></i> <a href="#"><?php echo $member["User"]["first_name"]?> <?php echo $member["User"]["last_name"]?></a><br />
+								<?php }?>
+							<?php }?>
 							<hr />
 							<h6>Invited</h6>
 							<?php if(isset($invites)){?>

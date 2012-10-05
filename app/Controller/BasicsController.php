@@ -86,8 +86,21 @@ class BasicsController extends AppController {
 						$startup  = $this->Startup->read(null,$starupId );
 						$userId = $this->UserAuth->getUserId();
 						
-						if(!empty($startup)){
-							// all os well!!!
+						if( $invite["StartupInvites"]["inviter_id"] == $userId){
+							// inviter activated his own invitation 
+						
+							$this->set('inviteStatus', -5);
+							$this->set('inviteStatusText', "Signed-in as inviter");
+						}else if(empty($startup)){
+							
+							// startup not found
+							$this->set('inviteStatus', -3);
+							$this->set('inviteStatusText', "Invalid Startup Invitation");
+							
+							
+						}else{
+							
+							// all is well!!!
 							$this->Session->write('User.'.$userId.'.startup_id',$starupId );
 							$this->set('startup', $startup);
 							$this->startup = $startup;
@@ -109,11 +122,6 @@ class BasicsController extends AppController {
 							$this->StartupInvites->save($invite);
 							
 							$this->set('inviteStatus', 1);
-							
-						}else{
-							// startup not found
-							$this->set('inviteStatus', -3);
-							$this->set('inviteStatusText', "Invalid Startup Invitation");
 						}
 							
 					}else{
@@ -187,6 +195,24 @@ class BasicsController extends AppController {
     				));
     				
     		$this->set('invites', $invites);
+			
+		}
+		
+		
+		if(isset($this->startup)){
+			$this->StartupUsers->bindModel(
+		        array('belongsTo' => array(
+		                'User' => array(
+		                    'className' => 'User'
+		                )
+		            )
+		        )
+		    );
+			$team = $this->StartupUsers->find('all', array(
+        				'conditions' => array('StartupUsers.startup_id' => $this->startup["Startup"]["id"])
+    				));
+    				
+    		$this->set('team', $team);
 			
 		}
 		
