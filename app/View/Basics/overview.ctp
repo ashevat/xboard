@@ -15,9 +15,10 @@
 						</div>
 					</div>
 					<div class="widget-content" style="padding-top: 20px">
-						<p>In section we will cover the basic, fondamental aspects of your startup. follow the task listed in this page to cover all your basics</p>
+						<p>In section we will cover the basics, fondamental, aspects of your startup. follow the tasks listed in this page to cover all your basics</p>
 						<p><b>Team:</b> assembeling a winning team is key to the success of your startup. In the first section you will login and add your team. At a later stage each team member will be assign with responsabilities in the startup</p>
 						<p><b>Name and vision:</b> a startup aim to solve a problem, make a change - your name and company vision are assential to becoming a successful startup</p>
+						<p><b>Profile:</b> startup useally fall in to categiries (mobile, web, B2B, B2C and so forth) the more information you add about your startup the better the system will be fine tuned to address your needs</p>
 					</div>
 				</div>
 			</div>
