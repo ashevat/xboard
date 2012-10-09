@@ -496,8 +496,30 @@ INSERT INTO `user_settings` (`id`, `name`, `name_public`, `value`, `type`) VALUE
 
 
 
+
+-- phpMyAdmin SQL Dump
+-- version 3.5.1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Oct 09, 2012 at 09:27 AM
+-- Server version: 5.5.24-log
+-- PHP Version: 5.3.13
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `xboard`
+--
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `plugins`
@@ -507,18 +529,47 @@ CREATE TABLE IF NOT EXISTS `plugins` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `version` float NOT NULL,
-  `category` int(11) NOT NULL,
+  `plugin_category_id` int(11) NOT NULL,
   `tag_line` varchar(100) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `author` int(11) NOT NULL,
+  `plugin_author_id` int(11) NOT NULL,
   `expiration` date NOT NULL,
   `cost` float NOT NULL,
-  `currancy` int(11) NOT NULL DEFAULT '1',
+  `currency` int(11) NOT NULL DEFAULT '1',
+  `installed` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   UNIQUE KEY `name` (`name`),
   UNIQUE KEY `name_2` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=63 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=64 ;
+
+--
+-- Dumping data for table `plugins`
+--
+
+INSERT INTO `plugins` (`id`, `name`, `version`, `plugin_category_id`, `tag_line`, `description`, `plugin_author_id`, `expiration`, `cost`, `currency`, `installed`) VALUES
+(10, 'contact manager plugin', 1, 3, 'Header text', 'This is a description for this plugin', 1, '0000-00-00', 0, 1, 0),
+(11, 'UX Wizard plugin', 1.2, 4, 'Header text', 'This is a description for this plugin', 2, '0000-00-00', 0.99, 1, 0);
+
+
+--
+-- Table structure for table `plugins_startups`
+--
+
+CREATE TABLE IF NOT EXISTS `plugins_startups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `startup_id` int(11) NOT NULL,
+  `plugin_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `plugins_startups`
+--
+
+INSERT INTO `plugins_startups` (`id`, `startup_id`, `plugin_id`) VALUES
+(1, 1, 10),
+(2, 1, 11);
 
 --
 -- Table structure for table `plugin_authors`
@@ -532,6 +583,13 @@ CREATE TABLE IF NOT EXISTS `plugin_authors` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
+--
+-- Dumping data for table `plugin_authors`
+--
+
+INSERT INTO `plugin_authors` (`id`, `name`, `info`) VALUES
+(1, 'Yuval Lubowich', 'some author description'),
+(2, 'John Doe', 'some author description');
 
 
 
@@ -547,12 +605,11 @@ CREATE TABLE IF NOT EXISTS `plugin_categories` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
-
 --
--- Table structure for table `user_plugins`
+-- Dumping data for table `plugin_categories`
 --
 
-CREATE TABLE IF NOT EXISTS `user_plugins` (
-  `user_id` int(11) NOT NULL,
-  `plugin_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `plugin_categories` (`id`, `name`, `description`) VALUES
+(3, 'Marketing', 'some category description'),
+(4, 'Product Manegnment', 'some category description');
+
