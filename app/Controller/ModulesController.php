@@ -46,30 +46,9 @@ class ModulesController extends AppController {
 	 *
 	 * @var array
 	 */
-	public $uses = array("Plugin","PluginCategories","PluginAuthors");
+	public $uses = array("Plugin","PluginCategories","PluginAuthors", "PluginsStartups");
 
-	/**
-	 * Displays a view
-	 *
-	 * @param mixed What page to display
-	 * @return void
-	 */
-	public function index() {
-
-		/*		$this->PluginCategories->bindModel(
-		 array('hasMany' => array(
-		 'Plugin' => array(
-		 'className' => 'Plugin',
-		 'foreignKey'   => 'categoryID'
-		 )
-		 )
-		 )
-		 );
-		 $pluginCat = $this->PluginCategories->find("all");
-		 $this->set("pluginCategoties",$pluginCat );
-		 */
-	}
-
+	
 	public function admin() {
 
 		//$this->set("starupId",$starupId);
@@ -174,40 +153,81 @@ class ModulesController extends AppController {
 			}//if
 			chdir('..');
 		}//for
+
+		//get active plugins
+		$this->PluginCategories->bindModel(
+				array('hasMany' => array(
+				 'Plugin' => array(
+					 'className' => 'Plugin',
+					 'foreignKey'   => 'plugin_category_id'
+			
+					 //need to add condition / filter
+					)
+				)
+			)
+		);
+		$pluginCat = $this->PluginCategories->find("all");
+		$this->set("activePluginCategoties",$pluginCat);
+		
+		$startupid= $this->startup["Startup"]["id"];
+		$curStartupPlugins = $this->PluginsStartups->find("all", array(
+        				'conditions' => array('PluginsStartups.startup_id' => $startupid)
+			)
+		);
+		
 		/*
-		 //get active plugins
-		 $this->PluginCategories->bindModel(
-		 array('hasMany' => array(
-		 'Plugin' => array(
-		 'className' => 'Plugin',
-		 'foreignKey'   => 'categoryID'
-
-		 //need to add condition / filter
-		 )
-		 )
-		 )
-		 );
-		 $pluginCat = $this->PluginCategories->find("all");
-		 $this->set("activePluginCategoties",$pluginCat );
-
-		 //get non active plugins
-		 $this->PluginCategories->bindModel(
-		 array('hasMany' => array(
+		//get non active plugins
+		$this->PluginCategories->bindModel(
+		array('hasMany' => array(
 		 'Plugin' => array(
 		 'className' => 'Plugin',
 		 'foreignKey'   => 'categoryID'
 		 //need to add condition / filter
-		 )
-		 )
-		 )
-		 );
-		 $pluginCat = $this->PluginCategories->find("all");
-		 $this->set("NonActivePluginCategoties",$pluginCat );
-		 */
+		)
+		)
+		)
+		);
+		$pluginCat = $this->PluginCategories->find("all");
+		$this->set("NonActivePluginCategoties",$pluginCat );
+		*/
 
-		$this->Startup->bindModel(array('hasAndBelongsToMany'=>array('Plugin')));
-		$this->Startup->recursive = 2;
+		//$this->Startup->bindModel(array('hasAndBelongsToMany'=>array('Plugin')));
+		//$this->Startup->recursive = 2;
 
+	}
+	
+	public function index(){
+		//get active plugins
+		/*
+		$this->PluginCategories->bindModel(
+				array('hasMany' => array(
+				 'Plugin' => array(
+					 'className' => 'Plugin',
+					 'foreignKey'   => 'plugin_category_id'
+					
+					 //need to add condition / filter
+					)
+				)
+			)
+		);
+		*/
+		
+		$startupid= $this->startup["Startup"]["id"];
+		$curStartupPlugins = $this->PluginsStartups->find("all", array(
+        				'conditions' => array('PluginsStartups.startup_id' => $startupid)
+			)
+		);
+		//$startupPluginsId = Set::classicExtract($curStartupPlugins, '{n}.PluginsStartups.plugin_id');
+		
+		$this->set("curStartupPlugins",$curStartupPlugins);
+		
+		
+		$pluginCat = $this->PluginCategories->find("all", array('recursive' => 2));
+		$this->set("pluginCategoties",$pluginCat);
+		
+		
+		$this->set("curStartupPlugins",$curStartupPlugins);
+	
 	}
 
 
