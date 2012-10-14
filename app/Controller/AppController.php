@@ -51,7 +51,7 @@ class AppController extends Controller {
 			$this->set('user', $user);
 			if(isset($user['User'])){
 			$starupId = $this->Session->read('User.'.$userId.'.startup_id');
-			echo "got here".$starupId;
+			//echo "got here".$starupId;
 			
 				if(!$starupId){
 					// find startup
