@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin_info>
+	<name>contact manager plugin</name>
+	<version>1.0</version>
+	<category>Marketing</category>
+	<tag_line>Header text</tag_line>
+	<description>Some text here</description>
+	<author>Yuval Lubowich</author>
+	<expiration>Never</expiration>
+	<cost>0</cost>
+</plugin_info>

@@ -32,57 +32,60 @@ App::uses('Controller', 'Controller');
  * @link http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-	
+
 	public $uses = array('Usermgmt.User', 'Usermgmt.UserGroup','Startup', 'StartupUsers');
-	
+
 	public $startup;
 	public $user;
-	
+	public $starupIdGlobal;
 	var $helpers = array('Form', 'Html', 'Session', 'Js', 'Usermgmt.UserAuth', 'Usermgmt.Image');
-		public $components = array('Session','RequestHandler', 'Usermgmt.UserAuth');
-		
-		function beforeFilter(){
-			$this->userAuth();
+	public $components = array('Session','RequestHandler', 'Usermgmt.UserAuth');
+
+	function beforeFilter(){
+		$this->userAuth();
 			
-			$userId = $this->UserAuth->getUserId();
-			$user = $this->User->read(null, $userId);
-			$this->user = $user;
-			$user['UserGroup']['name']=$this->UserGroup->getGroupsByIds($user['User']['user_group_id']);
-			$this->set('user', $user);
-			if(isset($user['User'])){
+		$userId = $this->UserAuth->getUserId();
+		$user = $this->User->read(null, $userId);
+		$this->user = $user;
+		$user['UserGroup']['name']=$this->UserGroup->getGroupsByIds($user['User']['user_group_id']);
+		$this->set('user', $user);
+		if(isset($user['User'])){
 			$starupId = $this->Session->read('User.'.$userId.'.startup_id');
-			//echo "got here".$starupId;
-			
-				if(!$starupId){
-					// find startup
-					$startupRef = $this->StartupUsers->find('first', array(
-        				'conditions' => array('StartupUsers.user_id' => $userId)
-    				));
-    				
-    				if(!empty($startupRef)){
-    					$starupId = $startupRef["StartupUsers"]["startup_id"];	
-    					$this->Session->write('User.'.$userId.'.startup_id',$starupId );
-    				}
-				}
 				
-				if($starupId){
-					$startup  = $this->Startup->read(null, $starupId);
-					if(!empty($startup)){
-						$this->set('startup', $startup);
-						$this->startup = $startup;
-					}else{
-						// startup was deleted
-						$this->Session->delete('User.'.$userId.'.startup_id');
-					}
-					
+			//echo "got here".$starupId;
+			$this->startup  =  $starupId;
+			if(!$starupId){
+				// find startup
+				$startupRef = $this->StartupUsers->find('first', array(
+        				'conditions' => array('StartupUsers.user_id' => $userId)
+				));
+
+				if(!empty($startupRef)){
+					$starupId = $startupRef["StartupUsers"]["startup_id"];
+					$this->Session->write('User.'.$userId.'.startup_id',$starupId );
 				}
 			}
+
+			if($starupId){
+				$startup  = $this->Startup->read(null, $starupId);
+				if(!empty($startup)){
+					$this->set('startup', $startup);
+					$this->startup = $startup;
+
+
+				}else{
+					// startup was deleted
+					$this->Session->delete('User.'.$userId.'.startup_id');
+				}
+					
+			}
+		}
 			
-		}
-		
-		
-		private function userAuth(){
-			$this->UserAuth->beforeFilter($this);
-		}
-	
+	}
+
+
+	private function userAuth(){
+		$this->UserAuth->beforeFilter($this);
+	}
+
 }

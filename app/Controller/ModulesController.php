@@ -211,8 +211,9 @@ class ModulesController extends AppController {
 			)
 		);
 		*/
-		
-		$startupid= $this->startup["Startup"]["id"];
+
+		$startupid = $this->startup["Startup"]["id"];
+
 		$curStartupPlugins = $this->PluginsStartups->find("all", array(
         				'conditions' => array('PluginsStartups.startup_id' => $startupid)
 			)

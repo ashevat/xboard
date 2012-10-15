@@ -18,29 +18,37 @@
 	</div>
 
 	<h2>Installed Plugins</h2>
-	
-	
-	<?php foreach ($pluginCategoties as $pluginCategotry){?>
-	<h3>
-	<?php echo $pluginCategotry["PluginCategories"]["name"]; ?>
-	</h3>
-	
-	<div class="row-fluid">
+
+
+	<?php foreach ($pluginCategoties as $pluginCategotry){
+		$firstTime = true;
+	?>
 
 	<?php foreach ($pluginCategotry["CatPlugins"] as $plugin){?>
-	
-		<?php 
-		if(Set::matches('/PluginsStartups[plugin_id='.$plugin["id"].']', $curStartupPlugins)) {
-		
-		 ?> 
+	<?php if($firstTime && Set::matches('/PluginsStartups[plugin_id='.$plugin["id"].']', $curStartupPlugins)) {?>
+	<h3>
+	<?php
+	echo $pluginCategotry["PluginCategories"]["name"];
+	$firstTime = false;
+	?>
+	</h3>
+	<?php } } ?>
+
+
+	<div class="row-fluid">
+
+	<?php foreach ($pluginCategotry["CatPlugins"] as $plugin){
+	if(Set::matches('/PluginsStartups[plugin_id='.$plugin["id"].']', $curStartupPlugins)) {
+
+		?>
 		<div class="span4">
 			<h4>
 			<?php echo $plugin["name"] ?>
 			</h4>
 			<p>
 			<?php echo $plugin["description"] ?>
-				<br> <small>Author <?php echo $plugin["OfAuthor"]["name"] ?> </small> <br> <small>Version
-				<?php echo $plugin["version"] ?> </small>
+				<br> <small>Author: <a href=><?php echo $plugin["OfAuthor"]["name"] ?>
+				</a> </small> <br> <small>Version <?php echo $plugin["version"] ?> </small>
 			</p>
 			<p>
 				<a class="btn btn-warning" href="#">Uninstall &raquo;</a>
@@ -53,29 +61,39 @@
 
 
 	<h2>Avilable Plugins</h2>
-	
-	
-	<?php foreach ($pluginCategoties as $pluginCategotry){?>
+
+
+	<?php
+	foreach ($pluginCategoties as $pluginCategotry){
+	$firstTime = true;
+	foreach ($pluginCategotry["CatPlugins"] as $plugin){
+	if($firstTime && !Set::matches('/PluginsStartups[plugin_id='.$plugin["id"].']', $curStartupPlugins)) {?>
 	<h3>
-	<?php echo $pluginCategotry["PluginCategories"]["name"]; ?>
+	<?php
+	echo $pluginCategotry["PluginCategories"]["name"];
+	$firstTime = false;
+	?>
 	</h3>
-	
+
+	<?php } } ?>
+
+
 	<div class="row-fluid">
 
 	<?php foreach ($pluginCategotry["CatPlugins"] as $plugin){?>
-	
-		<?php 
-		if(!Set::matches('/PluginsStartups[plugin_id='.$plugin["id"].']', $curStartupPlugins)) {
-		
-		 ?> 
+
+	<?php
+	if(!Set::matches('/PluginsStartups[plugin_id='.$plugin["id"].']', $curStartupPlugins)) {
+
+		?>
 		<div class="span4">
 			<h4>
 			<?php echo $plugin["name"] ?>
 			</h4>
 			<p>
 			<?php echo $plugin["description"] ?>
-				<br> <small>Author <?php echo $plugin["OfAuthor"]["name"] ?> </small> <br> <small>Version
-				<?php echo $plugin["version"] ?> </small>
+				<br> <small>Author: <a href=><?php echo $plugin["OfAuthor"]["name"] ?>
+				</a> </small> <br> <small>Version <?php echo $plugin["version"] ?> </small>
 			</p>
 			<p>
 				<a class="btn btn-success" href="#">Install &raquo;</a>
@@ -83,6 +101,5 @@
 		</div>
 		<?php } } ?>
 	</div>
-	<hr>
+
 	<?php } ?>
-	
