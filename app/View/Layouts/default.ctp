@@ -110,38 +110,47 @@
     				<li><?php echo $this->Html->link('Recommended reading',array('controller'=>'basics', 'action'=>'reading')); ?></li>
     			</ul>
     		</li>
-    		
-    		<li class="submenu top" id="menu-marketing">
-    			<?php echo $this->Html->link('<i class="icon icon-th"></i><span class="text">Marketing</span><span class="label">1</span>', '/marketing', array('escape'=>false)); ?>
-    			<ul class="leaf">
-    				<li><?php echo $this->Html->link('Pick Marketing Modules','/modules'); ?></li>
-    				<!--  <li><?php echo $this->Html->link('Logo / Graphics','/marketing/assets'); ?></li>
-    				<li><?php echo $this->Html->link('Tag line','/marketing/tagline'); ?></li>
-    				<li><?php echo $this->Html->link('Pitch','/marketing/mvp'); ?></li>
-    				<li><?php echo $this->Html->link('Business cards','/marketing/business-cards'); ?></li>-->
-    			</ul>
+<!-- This needs to be automated  
+
+
+1. go over all catagories
+2. if there's a plugin in the category -> 
+3. display the category
+4. display the plugin 
+ -->   		
+
+
+
+ 
+ 	<?php 
+ 	foreach ($pluginCategoties as $pluginCategotry){
+ 		$firstTime = true;
+		foreach ($pluginCategotry["CatPlugins"] as $plugin){
+			if($firstTime && Set::matches('/PluginsStartups[plugin_id='.$plugin["id"].']', $curStartupPlugins)) {
+			?>
+				
+			<li class="submenu top" id="menu-<?php echo $pluginCategotry["PluginCategories"]["name"];?>">
+			
+			<?php 
+				echo $this->Html->link('<i class="icon icon-th"></i><span class="text">'.$pluginCategotry["PluginCategories"]["name"].'</span><span class="label">17</span>', '/'.$pluginCategotry["PluginCategories"]["name"], array('escape'=>false)); 
+			    echo '<ul class="leaf">';
+				$firstTime = false;
+			}//if 
+		}//foreach
+
+		foreach ($pluginCategotry["CatPlugins"] as $plugin){
+			if(Set::matches('/PluginsStartups[plugin_id='.$plugin["id"].']', $curStartupPlugins)) {?>
+ 			<li><?php echo $this->Html->link($plugin["name"],'/'.$pluginCategotry["PluginCategories"]["name"].'/'.$plugin["name"]); ?></li>
+	<?php 
+			}//if
+ 		}//foreach
+
+	?> 			
+	<li><?php echo $this->Html->link('Edit Modules','/modules'); ?></li>
+    		</ul>
     		</li>
-    		<li class="submenu top"  id="menu-development">
-    			<?php echo $this->Html->link('<i class="icon icon-pencil"></i><span class="text">Development</span><span class="label">1</span>', '/development', array('escape'=>false)); ?>
-    			<ul class="leaf">
-    				<li><?php echo $this->Html->link('Pick Development Modules','/modules'); ?></li>
-    				<!--  <li><?php echo $this->Html->link('Development Stack','/development/stack'); ?></li>
-    				<li><?php echo $this->Html->link('UI/UX guidelines and resources','/development/uiux'); ?></li>
-    				<li><?php echo $this->Html->link('Source control','/development/scm'); ?></li>
-    				<li><?php echo $this->Html->link('Production environment','/development/production'); ?></li>-->
-    				
-    			</ul>
-    		</li>
-    		
-    		<li class="submenu top" id="menu-product">
-    			<?php echo $this->Html->link('<i class="icon icon-pencil"></i><span class="text">Product Management</span><span class="label">1</span>', '/development', array('escape'=>false)); ?>
-    			<ul class="leaf">
-    				<li><?php echo $this->Html->link('Pick Product Modules','/modules'); ?></li>
-    				
-    				
-    			</ul>
-    		</li>
-    		
+<?php  	}//foreach?>    		
+<!-- End of this needs to be automated -->    		
     		<li class="leaf top"  id="menu-dashboard">
     			<?php echo $this->Html->link('<i class="icon icon-signal"></i><span>Dashboard</span>', '/reports', array('escape'=>false)); ?>
     		</li>
