@@ -132,7 +132,7 @@
 			<li class="submenu top" id="menu-<?php echo $pluginCategotry["PluginCategories"]["name"];?>">
 			
 			<?php 
-				echo $this->Html->link('<i class="icon icon-th"></i><span class="text">'.$pluginCategotry["PluginCategories"]["name"].'</span><span class="label">17</span>', '/'.$pluginCategotry["PluginCategories"]["name"], array('escape'=>false)); 
+				echo $this->Html->link('<i class="icon icon-th"></i><span class="text">'.$pluginCategotry["PluginCategories"]["name"].'</span><span class="label">'.count($pluginCategotry["CatPlugins"]).'</span>', '/'.$pluginCategotry["PluginCategories"]["name"], array('escape'=>false)); 
 			    echo '<ul class="leaf">';
 				$firstTime = false;
 			}//if 

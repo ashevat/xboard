@@ -168,6 +168,7 @@ Configure::write('Dispatcher.filters', array(
 // load Usermgmt plugin and apply plugin routes. Keep all the other plugins you are using here
         CakePlugin::loadAll(array(
             'Usermgmt' => array('routes' => true, 'bootstrap' => true),
+         	'ContactManager' => array('routes' => true),
         ));
 
 
@@ -185,3 +186,5 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
+
+

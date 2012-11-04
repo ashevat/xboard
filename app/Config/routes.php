@@ -31,6 +31,8 @@
  */
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 
+//	Router::connect('/Marketing/*', array('plugin' => 'Contact_Manager', 'controller' => 'contacts', 'action' => 'index'));
+	
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 
  * how to customize the loading of plugin routes.
