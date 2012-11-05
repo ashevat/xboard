@@ -8,11 +8,10 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <?php echo $this->Html->css('bootstrap.min.css'); ?>
-    <?php echo $this->Html->css('bootstrap-responsive.min.css'); ?>
-    <?php echo $this->Html->css('umstyle.css'); ?>
-    <?php echo $this->Html->css('unicorn.main.css'); ?>
-    <?php echo $this->Html->css('unicorn.grey.css'); ?>    
+    <?php echo $this->Html->css('bootstrap.min'); ?>
+    <?php echo $this->Html->css('umstyle'); ?>
+    <?php echo $this->Html->css('unicorn.main'); ?>
+    <?php echo $this->Html->css('starthub-0.1'); ?>    
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -24,24 +23,27 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-    
+        <?php echo $this->Html->script('jquery.min'); ?>
      <?php echo $this->Html->script('excanvas.min'); ?>
-    <?php echo $this->Html->script('jquery.min'); ?>
+
   
   </head>
 
   <body>
-	<div id="header">
-		<h1>
-			<a href="/">StartHub</a>
-		</h1>
-	</div>
-	<div id="search">
-		<input type="text" placeholder="search here...">
-		<button class="tip-right" type="submit" data-original-title="Search">
-			<i class="icon-search icon-white"></i>
-		</button>
-	</div>
+	<header id="header">
+		<div class="container">
+			<h1 class="logo">
+				<a href="/">StartHub</a>
+			</h1>
+			<div id="search">
+				<input type="text" placeholder="search here..." class="span2">
+				<button class="tip-right" type="submit" data-original-title="Search">
+					<i class="icon-search icon-white"></i>
+				</button>
+			</div>
+		</div>
+	</header>
+	
     <div class="navbar" id="user-nav">
     <!-- 
     	 <div class="nav-collapse">
@@ -174,11 +176,11 @@
 				<i class="icon-home"></i>Home</a>
 			<a class="current" href="#">Dashboard</a>
 	   	</div>
-	   	<div class="container-fluid" id="xboard-main">
+	   	<div class="container-fluid" id="shub-main">
 			<?php echo $this->fetch('content'); ?>
 		    <div class="row-fluid">
 		    	<div id="footer">
-		    		<p>&copy; xBoard 2012</p>
+		    		<p>&copy; StartHub 2012</p>
 		       	</div>
 		    </div>
 		</div>  

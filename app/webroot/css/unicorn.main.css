@@ -10,7 +10,7 @@ a:hover {
 	text-decoration: none;
 }
 
-/* Header */
+/* Header 
 #header {
     height: 77px;
     position: relative;
@@ -33,7 +33,7 @@ a:hover {
     display: block;
 }
 
-/* Search input */
+/* Search input 
 #search {
 	position: absolute;
 	z-index: 25;
@@ -61,6 +61,8 @@ a:hover {
 #search button:hover i, #search button:active i {
 	opacity: 0.9;
 }
+
+*/
 /* Top user navigation */
 #user-nav {
     position: absolute;
