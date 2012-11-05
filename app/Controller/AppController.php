@@ -109,4 +109,9 @@ class AppController extends Controller {
 		$this->UserAuth->beforeFilter($this);
 	}
 
+	//Info / Warn / Error - will give the relevant classes.
+	public function notify($message, $type="Info") {
+		$this->Session->setFlash(h($message,"flash$type"));	
+	}
+	
 }
