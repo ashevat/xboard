@@ -125,8 +125,6 @@ a:hover {
     display: block;
     float: left;
     position: relative;
-    width: 220px;
-    z-index: 16;
 }
 
 #sidebar > ul {
@@ -167,6 +165,7 @@ a:hover {
 }
 
 #sidebar > ul ul {
+	list-style:none;
 	display: none;
 	margin: 0;
 	padding: 0;
@@ -190,7 +189,7 @@ a:hover {
 
 
 
-/* Content */
+/* Content 
 #content {
     background: none repeat scroll 0 0 #eeeeee;
     margin-left: 220px;
@@ -202,7 +201,7 @@ a:hover {
 
     border-top-left-radius: 8px;
 }
-
+*/
 #content-header {
 	background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(#FFFFFF), to(#EEEEEE));
 	background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #EEEEEE 100%);
