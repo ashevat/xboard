@@ -101,22 +101,50 @@
 	</section>
 	<section id="main-site">
 		<div class="container">
-		    <div id="sidebar" class="span2">
-		    	<a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
-			    	<ul>
-			    		<li class="leaf top" id="menu-home">
-			    			<?php echo $this->Html->link('<i class="icon icon-home"></i><span>Home</span>', '/', array('escape'=>false)); ?>
-			    		</li>
-			    		<li class="submenu top"  id="menu-basics">
-			    			<?php echo $this->Html->link('<i class="icon icon-th-list"></i><span>Basics</span><span class="label">5</span>', '/basics', array('escape'=>false)); ?>
-			    			<ul class="leaf">
-			    				<li><?php echo $this->Html->link('Overview',array('controller'=>'basics', 'action'=>'overview')); ?></li>
-			    				<li><?php echo $this->Html->link('Team',array('controller'=>'basics', 'action'=>'team')); ?></li>
-			    				<li><?php echo $this->Html->link('Name & Domain',array('controller'=>'basics', 'action'=>'name')); ?></li>
-			    				<li><?php echo $this->Html->link('Description / Profile',array('controller'=>'basics', 'action'=>'desc')); ?></li>
-			    				<li><?php echo $this->Html->link('Recommended reading',array('controller'=>'basics', 'action'=>'reading')); ?></li>
-			    			</ul>
-			    		</li>
+		    <div class="span3">
+		    		<a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a> <?php // what is this? ?>
+		    		<div class="accordion-heading accordion-heading-blue">
+						<?php echo $this->Html->link('Home', '/', array('class'=>'accordion-toggle non-content','escape'=>false)); ?>			
+			  		</div>
+		    		<div class="accordion" id="basics-acc">
+	  					<div class="accordion-group">
+			  				<div id="accordion-basics-heading" class="accordion-heading accordion-heading-blue up">
+								<a class="accordion-toggle" href="#accordion-basics-content" data-parent="#basics-acc" data-toggle="collapse">Basics</a>  				
+			  				</div>
+			  				<div id="accordion-basics-content" class="accordion-body accordion-content-blue in collapse" style="height: auto;">
+				  				<div class="accordion-inner">
+									<div class="content-box">
+										<ul class="sidebar">
+										<li><?php echo $this->Html->link('Overview',array('controller'=>'basics', 'action'=>'overview')); ?></li>
+						    				<li><?php echo $this->Html->link('Team',array('controller'=>'basics', 'action'=>'team')); ?></li>
+						    				<li><?php echo $this->Html->link('Name & Domain',array('controller'=>'basics', 'action'=>'name')); ?></li>
+						    				<li><?php echo $this->Html->link('Description / Profile',array('controller'=>'basics', 'action'=>'desc')); ?></li>
+						    				<li><?php echo $this->Html->link('Recommended reading',array('controller'=>'basics', 'action'=>'reading')); ?></li>
+						    			</ul>
+									</div>
+								</div>
+							</div>
+	  					</div>
+	  				</div>
+			  		<div class="accordion" id="modules-acc">
+			  			<div class="accordion-group">
+			  				<div id="accordion-modules-heading" class="accordion-heading accordion-heading-green up">
+								<a class="accordion-toggle" href="#accordion-modules-content" data-parent="#modules-acc" data-toggle="collapse">Modules</a>  				
+			  				</div>
+			  				<div id="accordion-modules-content" class="accordion-body accordion-content-green in collapse" style="height: auto;">
+				  				<div class="accordion-inner">
+									<div class="content-box">
+										<ul class="sidebar">
+											<li>What</li>
+						    			</ul>
+									</div>
+								</div>
+							</div>
+			  			</div>
+	  				</div>
+		    	
+		    	
+			    		
 					<?php 
 						/* This needs to be automated  
 							1. go over all catagories
@@ -137,7 +165,7 @@
 									<li class="submenu top" id="menu-<?php echo $pluginCategotry["PluginCategories"]["name"];?>">
 									
 									<?php 
-										echo $this->Html->link('<i class="icon icon-th"></i><span class="text">'.$pluginCategotry["PluginCategories"]["name"].'</span><span class="label">'.count($pluginCategotry["CatPlugins"]).'</span>', '/'.$pluginCategotry["PluginCategories"]["name"], array('escape'=>false)); 
+										echo $this->Html->link('<span class="text">'.$pluginCategotry["PluginCategories"]["name"].'</span><span class="label">'.count($pluginCategotry["CatPlugins"]).'</span>', '/'.$pluginCategotry["PluginCategories"]["name"], array('escape'=>false)); 
 									    echo '<ul class="leaf">';
 										$firstTime = false;
 									}//if ($firstTime &&
@@ -153,17 +181,17 @@
 						<?php  	}//foreach 
 				 	}//if
 				?>    		
-				<?php // End of this needs to be automated ?>    		
-		    		<li class="leaf top"  id="menu-dashboard">
-		    			<?php echo $this->Html->link('<i class="icon icon-signal"></i> Dashboard', '/reports', array('escape'=>false)); ?>
-		    		</li>
-		    	</ul>
+				<?php // End of this needs to be automated ?> 
+				<div class="accordion-heading accordion-heading-orange">
+					<?php echo $this->Html->link('Dashboard', '/reports', array('class'=>'accordion-toggle non-content','escape'=>false)); ?>			
+			  	</div>   		
+		    	
 		    </div>
-	    	<div id="content" class="span8 offset1">
+	    	<div id="content" class="span8">
 				<?php echo $this->fetch('content'); ?>
 			</div>
   		</div>
-  	</section>
+	</section>  	
   	<footer>
   	 	<div class="row">
 			<div id="footer">
@@ -184,9 +212,11 @@
     <?php echo $this->Html->script('unicorn'); ?>
     <script src = "https://domainsbot.blob.core.windows.net/javascript/jquery.domainsbot-1.0.min.js"></script>
       <script type="text/javascript">
-   $(document).ready(function() {
-		$('#<?php echo $openActive?>').addClass('open active');
-		$('ul.leaf li a[href="<?php echo $this->here; ?>"]').parent().addClass('active');
+   		$(document).ready(function() {
+   		 // Accordion Arrows
+   		    $('.accordion-body').on('show',function() {$(this).prev().addClass("up");});
+   		    $('.accordion-body').on('hide',function() {$(this).prev().removeClass("up");});
+		$('a[href="<?php echo $this->here; ?>"]').parent().addClass('active');
 	});
    </script>
   </body>
