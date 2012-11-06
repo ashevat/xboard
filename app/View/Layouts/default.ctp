@@ -150,7 +150,7 @@
 				<?php  	}//foreach?>    		
 				<?php // End of this needs to be automated ?>    		
 		    		<li class="leaf top"  id="menu-dashboard">
-		    			<?php echo $this->Html->link('<i class="icon icon-signal"></i><span>Dashboard</span>', '/reports', array('escape'=>false)); ?>
+		    			<?php echo $this->Html->link('<i class="icon icon-signal"></i> Dashboard', '/reports', array('escape'=>false)); ?>
 		    		</li>
 		    	</ul>
 		    </div>
