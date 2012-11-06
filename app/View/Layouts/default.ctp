@@ -31,7 +31,7 @@
 	<header id="header">
 		<div class="container" id="logo-container">
 			<h1 class="logo">
-				<a href="/">StartHub</a>
+				<?php echo $this->Html->link('StartHub', '/', array()); ?>
 			</h1>
 			<div id="search">
 				<input type="text" placeholder="search here..." class="span2">
