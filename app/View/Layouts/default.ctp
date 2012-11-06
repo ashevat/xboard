@@ -128,29 +128,29 @@
 				 	if(isset($pluginCategoties) && $pluginCategoties){
 				 		
 				 	
-				 	foreach ($pluginCategoties as $pluginCategotry){
-				 		$firstTime = true;
-						foreach ($pluginCategotry["CatPlugins"] as $plugin){
-							if($firstTime && Set::matches('/PluginsStartups[plugin_id='.$plugin["id"].']', $curStartupPlugins)) {
-							?>
-								
-							<li class="submenu top" id="menu-<?php echo $pluginCategotry["PluginCategories"]["name"];?>">
-							
-							<?php 
-								echo $this->Html->link('<i class="icon icon-th"></i><span class="text">'.$pluginCategotry["PluginCategories"]["name"].'</span><span class="label">'.count($pluginCategotry["CatPlugins"]).'</span>', '/'.$pluginCategotry["PluginCategories"]["name"], array('escape'=>false)); 
-							    echo '<ul class="leaf">';
-								$firstTime = false;
-							}//if ($firstTime &&
-						}//foreach $pluginCategotry
-				
-						foreach ($pluginCategotry["CatPlugins"] as $plugin){
-							if(Set::matches('/PluginsStartups[plugin_id='.$plugin["id"].']', $curStartupPlugins)) {?>
-				 				<li><?php echo $this->Html->link($plugin["name"],'/'.$pluginCategotry["PluginCategories"]["name"].'/'.$plugin["name"]); ?></li>
-							<?php }//if
-				 		}//foreach ?>
-					<li><?php echo $this->Html->link('Edit Modules','/modules'); ?></li>
-			    		
-				<?php  	}//foreach 
+						 	foreach ($pluginCategoties as $pluginCategotry){
+						 		$firstTime = true;
+								foreach ($pluginCategotry["CatPlugins"] as $plugin){
+									if($firstTime && Set::matches('/PluginsStartups[plugin_id='.$plugin["id"].']', $curStartupPlugins)) {
+									?>
+										
+									<li class="submenu top" id="menu-<?php echo $pluginCategotry["PluginCategories"]["name"];?>">
+									
+									<?php 
+										echo $this->Html->link('<i class="icon icon-th"></i><span class="text">'.$pluginCategotry["PluginCategories"]["name"].'</span><span class="label">'.count($pluginCategotry["CatPlugins"]).'</span>', '/'.$pluginCategotry["PluginCategories"]["name"], array('escape'=>false)); 
+									    echo '<ul class="leaf">';
+										$firstTime = false;
+									}//if ($firstTime &&
+								}//foreach $pluginCategotry
+						
+								foreach ($pluginCategotry["CatPlugins"] as $plugin){
+									if(Set::matches('/PluginsStartups[plugin_id='.$plugin["id"].']', $curStartupPlugins)) {?>
+						 				<li><?php echo $this->Html->link($plugin["name"],'/'.$pluginCategotry["PluginCategories"]["name"].'/'.$plugin["name"]); ?></li>
+									<?php }//if
+						 		}//foreach ?>
+							<li><?php echo $this->Html->link('Edit Modules','/modules'); ?></li>
+					    		
+						<?php  	}//foreach 
 				 	}//if
 				?>    		
 				<?php // End of this needs to be automated ?>    		
