@@ -125,6 +125,9 @@
 							4. display the plugin 
 					 	*/ ?>   		
 				 	<?php 
+				 	if(isset($pluginCategoties) && $pluginCategoties){
+				 		
+				 	
 				 	foreach ($pluginCategoties as $pluginCategotry){
 				 		$firstTime = true;
 						foreach ($pluginCategotry["CatPlugins"] as $plugin){
@@ -147,7 +150,9 @@
 				 		}//foreach ?>
 					<li><?php echo $this->Html->link('Edit Modules','/modules'); ?></li>
 			    		
-				<?php  	}//foreach?>    		
+				<?php  	}//foreach 
+				 	}//if
+				?>    		
 				<?php // End of this needs to be automated ?>    		
 		    		<li class="leaf top"  id="menu-dashboard">
 		    			<?php echo $this->Html->link('<i class="icon icon-signal"></i> Dashboard', '/reports', array('escape'=>false)); ?>
