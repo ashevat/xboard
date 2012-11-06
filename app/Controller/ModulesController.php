@@ -51,7 +51,6 @@ class ModulesController extends AppController {
 	
 	public function admin() {
 
-		//$this->set("starupId",$starupId);
 
 		//iterate over all plugin folders and load them into the plugin tables
 		//note: this has nothing to do with the assigment of a plugin to a user or startup
@@ -153,7 +152,7 @@ class ModulesController extends AppController {
 			}//if
 			chdir('..');
 		}//for
-
+/*
 		//get active plugins
 		$this->PluginCategories->bindModel(
 				array('hasMany' => array(
@@ -197,20 +196,7 @@ class ModulesController extends AppController {
 	}
 	
 	public function index(){
-		//get active plugins
-		/*
-		$this->PluginCategories->bindModel(
-				array('hasMany' => array(
-				 'Plugin' => array(
-					 'className' => 'Plugin',
-					 'foreignKey'   => 'plugin_category_id'
-					
-					 //need to add condition / filter
-					)
-				)
-			)
-		);
-		*/
+/*
 
 		$startupid = $this->startup["Startup"]["id"];
 
@@ -228,8 +214,8 @@ class ModulesController extends AppController {
 		
 		
 		$this->set("curStartupPlugins",$curStartupPlugins);
-	
-	}
+	*/
+	}	
 
 
 	public function details($moduleID) {

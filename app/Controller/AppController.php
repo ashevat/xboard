@@ -33,14 +33,16 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-	public $uses = array('Usermgmt.User', 'Usermgmt.UserGroup','Startup', 'StartupUsers');
+	public $uses = array('Usermgmt.User', 'Usermgmt.UserGroup','Startup', 'StartupUsers','Plugin',"PluginCategories","PluginAuthors", "PluginsStartups");
 
 	public $startup;
 	public $user;
 	public $starupIdGlobal;
 	var $helpers = array('Form', 'Html', 'Session', 'Js', 'Usermgmt.UserAuth', 'Usermgmt.Image');
 	public $components = array('Session','RequestHandler', 'Usermgmt.UserAuth');
-
+	
+	
+	
 	function beforeFilter(){
 		$this->userAuth();
 			
@@ -51,7 +53,7 @@ class AppController extends Controller {
 		$this->set('user', $user);
 		if(isset($user['User'])){
 			$starupId = $this->Session->read('User.'.$userId.'.startup_id');
-				
+
 			//echo "got here".$starupId;
 			$this->startup  =  $starupId;
 			if(!$starupId){
@@ -79,8 +81,27 @@ class AppController extends Controller {
 				}
 					
 			}
-		}
+
+
+			$startupid = $this->startup["Startup"]["id"];
+
+			$curStartupPlugins = $this->PluginsStartups->find("all", array(
+			'conditions' => array('PluginsStartups.startup_id' => $startupid)
+			)
+			);
+			//$startupPluginsId = Set::classicExtract($curStartupPlugins, '{n}.PluginsStartups.plugin_id');
+
+			$this->set("curStartupPlugins",$curStartupPlugins);
+
+
+			$pluginCat = $this->PluginCategories->find("all", array('recursive' => 2));
+			$this->set("pluginCategoties",$pluginCat);
+
+
+			$this->set("curStartupPlugins",$curStartupPlugins);
 			
+		}
+		
 	}
 
 
@@ -88,4 +109,9 @@ class AppController extends Controller {
 		$this->UserAuth->beforeFilter($this);
 	}
 
+	//Info / Warn / Error - will give the relevant classes.
+	public function notify($message, $type="Info") {
+		$this->Session->setFlash(h($message,"flash$type"));	
+	}
+	
 }

@@ -10,7 +10,7 @@ a:hover {
 	text-decoration: none;
 }
 
-/* Header */
+/* Header 
 #header {
     height: 77px;
     position: relative;
@@ -33,7 +33,7 @@ a:hover {
     display: block;
 }
 
-/* Search input */
+/* Search input 
 #search {
 	position: absolute;
 	z-index: 25;
@@ -61,6 +61,8 @@ a:hover {
 #search button:hover i, #search button:active i {
 	opacity: 0.9;
 }
+
+*/
 /* Top user navigation */
 #user-nav {
     position: absolute;
@@ -123,8 +125,6 @@ a:hover {
     display: block;
     float: left;
     position: relative;
-    width: 220px;
-    z-index: 16;
 }
 
 #sidebar > ul {
@@ -165,11 +165,13 @@ a:hover {
 }
 
 #sidebar > ul ul {
+	list-style:none;
 	display: none;
 	margin: 0;
 	padding: 0;
-	box-shadow: 0 0 3px rgba(0,0,0,0.5) inset;
+	/*box-shadow: 0 0 3px rgba(0,0,0,0.5) inset;*/
 }
+
 #sidebar > ul li.open ul {
 	display: block;
 }
@@ -188,7 +190,7 @@ a:hover {
 
 
 
-/* Content */
+/* Content 
 #content {
     background: none repeat scroll 0 0 #eeeeee;
     margin-left: 220px;
@@ -200,7 +202,7 @@ a:hover {
 
     border-top-left-radius: 8px;
 }
-
+*/
 #content-header {
 	background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(#FFFFFF), to(#EEEEEE));
 	background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #EEEEEE 100%);
