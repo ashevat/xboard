@@ -150,12 +150,11 @@ a.non-content { background-image:none !important;}
 }
 .sidebar > li a {
  	border: 1px solid transparent;
-    display: block;
     font-family: "Bariol",Helvetica,Arial,sans-serif;
     font-size:16px;
-    
 }
 
+.sidebar > li img { vertical-align:top; margin-right:10px}
 
 
 

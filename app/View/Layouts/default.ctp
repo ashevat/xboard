@@ -115,11 +115,11 @@
 				  				<div class="accordion-inner">
 									<div class="content-box">
 										<ul class="sidebar">
-										<li><?php echo $this->Html->link('Overview',array('controller'=>'basics', 'action'=>'overview')); ?></li>
-						    				<li><?php echo $this->Html->link('Team',array('controller'=>'basics', 'action'=>'team')); ?></li>
-						    				<li><?php echo $this->Html->link('Name & Domain',array('controller'=>'basics', 'action'=>'name')); ?></li>
-						    				<li><?php echo $this->Html->link('Description / Profile',array('controller'=>'basics', 'action'=>'desc')); ?></li>
-						    				<li><?php echo $this->Html->link('Recommended reading',array('controller'=>'basics', 'action'=>'reading')); ?></li>
+											<li><?php echo $this->Html->image("ok.png"); echo $this->Html->link('Overview',array('controller'=>'basics', 'action'=>'overview')); ?></li>
+						    				<li><?php echo $this->Html->image("ok.png"); echo $this->Html->link('Team',array('controller'=>'basics', 'action'=>'team'),array('escape'=>false)); ?></li>
+						    				<li><?php echo $this->Html->image("empty.png"); echo $this->Html->link('Name & Domain',array('controller'=>'basics', 'action'=>'name')); ?></li>
+						    				<li><?php echo $this->Html->image("empty.png"); echo $this->Html->link('Description / Profile',array('controller'=>'basics', 'action'=>'desc')); ?></li>
+						    				<li><?php echo $this->Html->image("empty.png"); echo $this->Html->link('Recommended reading',array('controller'=>'basics', 'action'=>'reading')); ?></li>
 						    			</ul>
 									</div>
 								</div>
