@@ -140,7 +140,7 @@
 						
 								foreach ($pluginCategotry["CatPlugins"] as $plugin){
 									if(Set::matches('/PluginsStartups[plugin_id='.$plugin["id"].']', $curStartupPlugins)) {?>
-						 				<li><?php echo $this->Html->link($plugin["name"],'/'.$pluginCategotry["PluginCategories"]["name"].'/'.$plugin["name"]); ?></li>
+						 				<li><?php echo $this->Html->link($plugin["name"],'/'.$pluginCategotry["PluginCategories"]["name"].'/'.$plugin["QualifiedName"].'/'); ?></li>
 									<?php }//if
 						 		}//foreach ?>
 							<li><?php echo $this->Html->link('Edit Modules','/modules'); ?></li>
