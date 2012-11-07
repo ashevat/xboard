@@ -510,10 +510,6 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `xboard`
@@ -528,6 +524,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `plugins` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
+  `QualifiedName` varchar(100) NOT NULL,
   `version` float NOT NULL,
   `plugin_category_id` int(11) NOT NULL,
   `tag_line` varchar(100) NOT NULL,
@@ -541,15 +538,17 @@ CREATE TABLE IF NOT EXISTS `plugins` (
   UNIQUE KEY `id` (`id`),
   UNIQUE KEY `name` (`name`),
   UNIQUE KEY `name_2` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=64 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `plugins`
 --
 
-INSERT INTO `plugins` (`id`, `name`, `version`, `plugin_category_id`, `tag_line`, `description`, `plugin_author_id`, `expiration`, `cost`, `currency`, `installed`) VALUES
-(10, 'contact manager plugin', 1, 3, 'Header text', 'This is a description for this plugin', 1, '0000-00-00', 0, 1, 0),
-(11, 'UX Wizard plugin', 1.2, 4, 'Header text', 'This is a description for this plugin', 2, '0000-00-00', 0.99, 1, 0);
+INSERT INTO `plugins` (`id`, `name`, `QualifiedName`, `version`, `plugin_category_id`, `tag_line`, `description`, `plugin_author_id`, `expiration`, `cost`, `currency`, `installed`) VALUES
+(10, 'contact manager', 'ContactManager', 1, 3, 'Header text', 'This is a description for this plugin', 1, '0000-00-00', 0, 1, 0),
+(11, 'UX Wizard', 'UXWizard', 1.2, 4, 'Header text', 'This is a description for this plugin', 2, '0000-00-00', 0.99, 1, 0),
+(12, 'Development Methodology', 'DevelopmentMethodology', 1, 5, '', 'short description', 1, '0000-00-00', 0, 1, 0),
+(13, 'Scrum best practices', 'ScrumBestPractices', 0.9, 5, 'all you need to know about scrum and didnt bother to ask', 'all you need to know about scrum and didnt bother to ask', 1, '0000-00-00', 0, 1, 0);
 
 
 --
