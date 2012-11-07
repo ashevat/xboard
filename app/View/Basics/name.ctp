@@ -1,9 +1,15 @@
-<div class="row-fluid">
-	<div class="span4">
-		<div class="row-fluid">
-			<div class="span10">
-				<article>
-					<div class="widget-box">
+<ul class="nav nav-tabs" id="top-tabs">
+		<li>
+			<a href="#tips" data-toggle="tab">Tips and tricks</a>
+		</li>
+		<li><a href="#name" data-toggle="tab">Name and Domain</a></li>
+		<li>
+			<a href="#guide" data-toggle="tab">Guidance</a>
+		</li>
+	</ul>
+	<div class="tab-content" style="visibility:hidden" id="tabbed-content">
+		<div class="tab-pane" id="tips">
+			<div class="widget-box">
 						<div class="widget-title">
 							<span class="icon"><i class="icon-star-empty"></i> </span>
 							<h5>Tips and tricks</h5>
@@ -20,64 +26,54 @@
 							</p>
 						</div>
 					</div>
-				</article>
+		</div>
+		<div class="tab-pane" id="name">
+			<div class="span4">
+				<div class="widget-box">
+					<div class="widget-title">
+						<span class="icon"><i class="icon-star-empty"></i> </span>
+						<h5>Name and domain</h5>
+					</div>
+					<div class="widget-content">
+						<h3>1) Startup Name:</h3>
+						<input type="text" id="name" /><br />
+						<h3>2) Domain Keywords:</h3>
+						<input type="text" id="search_box" /> <br /> <input
+							class="btn btn-primary btn-large" type="button"
+							id="search_button" value="Search" /> <input
+							class="btn btn-success btn-large" type="button" id="save"
+							value="Save" />
+					</div>
+				</div>
+			</div>
+			<div class="span4">
+				<div class="widget-box">
+					<div class="widget-title">
+						<span class="icon"><i class="icon-star-empty"></i> </span>
+						<h5>Available Domains</h5>
+					</div>
+					<div class="widget-content">
+						<div id="loader">
+							<img
+								src="http://domainsbot.blob.core.windows.net/img/loading.gif"
+								alt="Loading..">
+						</div>
+						<div id="checking">
+							<img
+								src="http://domainsbot.blob.core.windows.net/img/checking.gif"
+								alt="Checking..">
+						</div>
+						<div id="results"></div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
+		
+	
+	
 
-	<div class="span4">
-		<div class="row-fluid">
-			<div class="span10">
-				<article>
-					<div class="widget-box">
-						<div class="widget-title">
-							<span class="icon"><i class="icon-star-empty"></i> </span>
-							<h5>Name and domain</h5>
-						</div>
-						<div class="widget-content">
-							<h3>1) Startup Name:</h3>
-							<input type="text" id="name" /><br />
-							<h3>2) Domain Keywords:</h3>
-							<input type="text" id="search_box" /> <br /> <input
-								class="btn btn-primary btn-large" type="button"
-								id="search_button" value="Search" /> <input
-								class="btn btn-success btn-large" type="button" id="save"
-								value="Save" />
-						</div>
-					</div>
-				</article>
-			</div>
-		</div>
-		<div class="row-fluid">
-			<div class="span10">
-				<article>
-					<div class="widget-box">
-						<div class="widget-title">
-							<span class="icon"><i class="icon-star-empty"></i> </span>
-							<h5>Available Domains</h5>
-						</div>
-						<div class="widget-content">
-							<div id="loader">
-								<img
-									src="http://domainsbot.blob.core.windows.net/img/loading.gif"
-									alt="Loading..">
-							</div>
-							<div id="checking">
-								<img
-									src="http://domainsbot.blob.core.windows.net/img/checking.gif"
-									alt="Checking..">
-							</div>
-							<div id="results"></div>
-						</div>
-					</div>
-				</article>
-			</div>
-		</div>
-	</div>
-	<div class="span4">
-		<div class="row-fluid">
-			<article>
-				<div class="span11">
+	
+	<div class="tab-pane" id="guide">
 					<div class="widget-box">
 						<div class="widget-title">
 							<span class="icon"><i class="icon-tag"></i> </span>
@@ -105,17 +101,13 @@
 						</div>
 					</div>
 				</div>
-			</article>
-		</div>
-	</div>
 </div>
-
-
-
 
 <script>
     $(document).ready(function ()
     {
+   		$('#tabbed-content').css('visibility','visible');
+   		$('#top-tabs a:last').tab('show');
         var client = $().domainsbot({
 	     parameters : {
 				"pageSize" : 5,

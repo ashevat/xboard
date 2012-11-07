@@ -179,7 +179,6 @@
     <script src = "https://domainsbot.blob.core.windows.net/javascript/jquery.domainsbot-1.0.min.js"></script>
       <script type="text/javascript">
    		$(document).ready(function() {
-   	   		console.log($('a[href="<?php echo $this->here; ?>"]').closest('li'));
 			$('a[href="<?php echo $this->here; ?>"]').closest('li').addClass('active');
 		});
    </script>
