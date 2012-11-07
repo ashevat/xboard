@@ -153,7 +153,7 @@
 				<?php // End of this needs to be automated ?> 
 		    	</ul>
 		    </div>
-	    	<div id="content" class="span8">
+	    	<div id="content" class="span9">
 				<?php echo $this->fetch('content'); ?>
 			</div>
   		</div>
