@@ -101,50 +101,18 @@
 	</section>
 	<section id="main-site">
 		<div class="container">
-		    <div class="span3">
+		    <div class="span2">
 		    		<a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a> <?php // what is this? ?>
-		    		<div class="accordion-heading accordion-heading-blue">
-						<?php echo $this->Html->link('Home', '/', array('class'=>'accordion-toggle non-content','escape'=>false)); ?>			
-			  		</div>
-		    		<div class="accordion" id="basics-acc">
-	  					<div class="accordion-group">
-			  				<div id="accordion-basics-heading" class="accordion-heading accordion-heading-blue up">
-								<a class="accordion-toggle" href="#accordion-basics-content" data-parent="#basics-acc" data-toggle="collapse">Basics</a>  				
-			  				</div>
-			  				<div id="accordion-basics-content" class="accordion-body accordion-content-blue in collapse" style="height: auto;">
-				  				<div class="accordion-inner">
-									<div class="content-box">
-										<ul class="sidebar">
-											<li><?php echo $this->Html->image("ok.png"); echo $this->Html->link('Overview',array('controller'=>'basics', 'action'=>'overview')); ?></li>
-						    				<li><?php echo $this->Html->image("ok.png"); echo $this->Html->link('Team',array('controller'=>'basics', 'action'=>'team'),array('escape'=>false)); ?></li>
-						    				<li><?php echo $this->Html->image("empty.png"); echo $this->Html->link('Name & Domain',array('controller'=>'basics', 'action'=>'name')); ?></li>
-						    				<li><?php echo $this->Html->image("empty.png"); echo $this->Html->link('Description / Profile',array('controller'=>'basics', 'action'=>'desc')); ?></li>
-						    				<li><?php echo $this->Html->image("empty.png"); echo $this->Html->link('Recommended reading',array('controller'=>'basics', 'action'=>'reading')); ?></li>
-						    			</ul>
-									</div>
-								</div>
-							</div>
-	  					</div>
-	  				</div>
-			  		<div class="accordion" id="modules-acc">
-			  			<div class="accordion-group">
-			  				<div id="accordion-modules-heading" class="accordion-heading accordion-heading-green up">
-								<a class="accordion-toggle" href="#accordion-modules-content" data-parent="#modules-acc" data-toggle="collapse">Modules</a>  				
-			  				</div>
-			  				<div id="accordion-modules-content" class="accordion-body accordion-content-green in collapse" style="height: auto;">
-				  				<div class="accordion-inner">
-									<div class="content-box">
-										<ul class="sidebar">
-											<li>What</li>
-						    			</ul>
-									</div>
-								</div>
-							</div>
-			  			</div>
-	  				</div>
-		    	
-		    	
-			    		
+		    		<ul class="sh-menu">
+		    			<li><?php echo $this->Html->link('Home', '/'); ?></li>			
+		    			<li><?php echo $this->Html->link('Dashboard', '/reports'); ?></li>
+		    			<li class="main-menu-item"><i class="icon-th-list"></i> Basics</li>
+						<li><?php echo $this->Html->image("ok.png"); ?><span class="task-completed"><?php echo $this->Html->link('Overview',array('controller'=>'basics', 'action'=>'overview')); ?></span></li>
+	    				<li><?php echo $this->Html->image("ok.png"); ?><span class="task-completed"><?php echo $this->Html->link('Team',array('controller'=>'basics', 'action'=>'team')); ?></span></li>
+	    				<li><?php echo $this->Html->image("empty.png"); echo $this->Html->link('Name & Domain',array('controller'=>'basics', 'action'=>'name')); ?></li>
+	    				<li><?php echo $this->Html->image("empty.png"); echo $this->Html->link('Description / Profile',array('controller'=>'basics', 'action'=>'desc')); ?></li>
+	    				<li><?php echo $this->Html->image("empty.png"); echo $this->Html->link('Reading',array('controller'=>'basics', 'action'=>'reading')); ?></li>
+						<li class="main-menu-item"><i class="icon-th-list"></i> Modules</li>
 					<?php 
 						/* This needs to be automated  
 							1. go over all catagories
@@ -153,10 +121,9 @@
 							4. display the plugin 
 					 	*/ ?>   		
 				 	<?php 
-				 	if(isset($pluginCategoties) && $pluginCategoties){
-				 		
-				 	
-						 	foreach ($pluginCategoties as $pluginCategotry){
+				 	if(isset($pluginCategoties) && $pluginCategoties){ ?>
+				 			
+						<?php 	foreach ($pluginCategoties as $pluginCategotry){
 						 		$firstTime = true;
 								foreach ($pluginCategotry["CatPlugins"] as $plugin){
 									if($firstTime && Set::matches('/PluginsStartups[plugin_id='.$plugin["id"].']', $curStartupPlugins)) {
@@ -178,14 +145,13 @@
 						 		}//foreach ?>
 							<li><?php echo $this->Html->link('Edit Modules','/modules'); ?></li>
 					    		
-						<?php  	}//foreach 
-				 	}//if
+						<?php  	}//foreach
+						 		
+				 	}//if  
 				?>    		
+				
 				<?php // End of this needs to be automated ?> 
-				<div class="accordion-heading accordion-heading-orange">
-					<?php echo $this->Html->link('Dashboard', '/reports', array('class'=>'accordion-toggle non-content','escape'=>false)); ?>			
-			  	</div>   		
-		    	
+		    	</ul>
 		    </div>
 	    	<div id="content" class="span8">
 				<?php echo $this->fetch('content'); ?>
@@ -213,11 +179,9 @@
     <script src = "https://domainsbot.blob.core.windows.net/javascript/jquery.domainsbot-1.0.min.js"></script>
       <script type="text/javascript">
    		$(document).ready(function() {
-   		 // Accordion Arrows
-   		    $('.accordion-body').on('show',function() {$(this).prev().addClass("up");});
-   		    $('.accordion-body').on('hide',function() {$(this).prev().removeClass("up");});
-		$('a[href="<?php echo $this->here; ?>"]').parent().addClass('active');
-	});
+   	   		console.log($('a[href="<?php echo $this->here; ?>"]').closest('li'));
+			$('a[href="<?php echo $this->here; ?>"]').closest('li').addClass('active');
+		});
    </script>
   </body>
 </html>
