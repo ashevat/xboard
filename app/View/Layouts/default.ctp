@@ -121,36 +121,51 @@
 							4. display the plugin 
 					 	*/ ?>   		
 				 	<?php 
-				 	if(isset($pluginCategoties) && $pluginCategoties){ ?>
+				 	
+				 	if(isset($pluginCategories) && $pluginCategories){ 
+				 		foreach ($pluginCategories as $topLevel){ ?>
+				 			<li id="menu-<?php echo $topLevel['PluginCategories']['name'];?>">
+				 				<?php echo $this->Html->link($topLevel["PluginCategories"]["name"].'<span class="label">'.
+															count($topLevel["CatPlugins"]).'</span>', '/'.$topLevel["PluginCategories"]["name"], array('escape'=>false)); ?>
+								<ul class="sh-plugin-children">
+								<?php foreach ($topLevel['CatPlugins'] as $plugin) { ?>
+									<li><?php echo $this->Html->link($plugin["name"],'/'.$topLevel["PluginCategories"]["name"].'/'.$plugin["QualifiedName"].'/'); ?></li>
+								<?php } ?>
+								</ul>
+							</li>
+				 		<?php } ?>
+				 		<li><?php echo $this->Html->link('Edit Modules','/modules'); ?></li>
+				 		<?php 		}?>
+				 			<!-- 
 				 			
-						<?php 	foreach ($pluginCategoties as $pluginCategotry){
-						 		$firstTime = true;
-								foreach ($pluginCategotry["CatPlugins"] as $plugin){
-									if($firstTime && Set::matches('/PluginsStartups[plugin_id='.$plugin["id"].']', $curStartupPlugins)) {
-									?>
+				 									< ?php foreach ($pluginCategoties as $pluginCategotry){
+						 			$firstTime = true;
+									foreach ($pluginCategotry["CatPlugins"] as $plugin){
+										if($firstTime && Set::matches('/PluginsStartups[plugin_id='.$plugin["id"].']', $curStartupPlugins)) { ?>
 										
-									<li class="submenu top" id="menu-<?php echo $pluginCategotry["PluginCategories"]["name"];?>">
+											
 									
-									<?php 
-										echo $this->Html->link('<span class="text">'.$pluginCategotry["PluginCategories"]["name"].'</span><span class="label">'.count($pluginCategotry["CatPlugins"]).'</span>', '/'.$pluginCategotry["PluginCategories"]["name"], array('escape'=>false)); 
-									    echo '<ul class="leaf">';
-										$firstTime = false;
-									}//if ($firstTime &&
-								}//foreach $pluginCategotry
+											< ?php 
+												 
+											    echo '<ul class="leaf">';
+												$firstTime = false;
+										}//if ($firstTime &&
+								
 						
-								foreach ($pluginCategotry["CatPlugins"] as $plugin){
-									if(Set::matches('/PluginsStartups[plugin_id='.$plugin["id"].']', $curStartupPlugins)) {?>
-						 				<li><?php echo $this->Html->link($plugin["name"],'/'.$pluginCategotry["PluginCategories"]["name"].'/'.$plugin["QualifiedName"].'/'); ?></li>
-									<?php }//if
-						 		}//foreach ?>
-							<li><?php echo $this->Html->link('Edit Modules','/modules'); ?></li>
+										foreach ($pluginCategotry["CatPlugins"] as $plugin){
+											if(Set::matches('/PluginsStartups[plugin_id='.$plugin["id"].']', $curStartupPlugins)) {?>
+						 						
+											< ?php }//if
+						 				}//foreach 
+						 			}//foreach $pluginCategotry?>
+							<li>< ?php echo $this->Html->link('Edit Modules','/modules'); ?></li>
 					    		
-						<?php  	}//foreach
+						< ?php  	}//foreach
 						 		
 				 	}//if  
 				?>    		
 				
-				<?php // End of this needs to be automated ?> 
+				< ?php // End of this needs to be automated ?> -->
 		    	</ul>
 		    </div>
 	    	<div id="content" class="span9">
@@ -165,7 +180,6 @@
 			</div>
 		</div>
 	</footer>
-   
      <?php echo $this->Html->script('jquery.ui.custom'); ?>
      <?php echo $this->Html->script('bootstrap.min'); ?>
     

@@ -95,7 +95,7 @@ class AppController extends Controller {
 
 
 			$pluginCat = $this->PluginCategories->find("all", array('recursive' => 2));
-			$this->set("pluginCategoties",$pluginCat);
+			$this->set("pluginCategories",$pluginCat);
 
 
 			$this->set("curStartupPlugins",$curStartupPlugins);
