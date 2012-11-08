@@ -1,18 +1,18 @@
 <ul class="nav nav-tabs" id="top-tabs">
 	<li>
-		<a href="#tips" data-toggle="tab">Tips and tricks</a>
+		<a href="#guide" data-toggle="tab">Guidance</a>
 	</li>
 	<li><a href="#tasks" data-toggle="tab">My tasks</a></li>
 	<li>
-		<a href="#guide" data-toggle="tab">Guidance</a>
-	</li>
+		<a href="#tips" data-toggle="tab">Tips</a>
+	</li>	
 </ul>
 <div class="tab-content" style="visibility:hidden" id="tabbed-content">
 	<div class="tab-pane" id="tips">
 		<div class="widget-box">
 			<div class="widget-title">
 				<span class="icon"><i class="icon-star-empty"></i> </span>
-				<h5>Tips and tricks</h5>
+				<h5>Tips</h5>
 			</div>
 			<div class="widget-content">
 				<p>bla bla</p>
@@ -87,7 +87,7 @@
 <script>
 $(function () {
 	$('#tabbed-content').css('visibility','visible');
-	$('#top-tabs a:last').tab('show');
+	$('#top-tabs a:first').tab('show');
 });
 </script>
 
