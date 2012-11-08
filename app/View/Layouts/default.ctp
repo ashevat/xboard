@@ -125,47 +125,18 @@
 				 	if(isset($pluginCategories) && $pluginCategories){ 
 				 		foreach ($pluginCategories as $topLevel){ ?>
 				 			<li id="menu-<?php echo $topLevel['PluginCategories']['name'];?>">
-				 				<?php echo $this->Html->link($topLevel["PluginCategories"]["name"].'<span class="label">'.
-															count($topLevel["CatPlugins"]).'</span>', '/'.$topLevel["PluginCategories"]["name"], array('escape'=>false)); ?>
-								<ul class="sh-plugin-children">
+				 				<?php echo $this->Html->link($topLevel["PluginCategories"]["name"].
+				 				(count($topLevel["CatPlugins"]) > 0 ? 
+				 				'  <span class="badge badge-info">'.count($topLevel["CatPlugins"]).'</span>' : ''),
+				 				 '/'.$topLevel["PluginCategories"]["name"], array('escape'=>false)); ?>
 								<?php foreach ($topLevel['CatPlugins'] as $plugin) { ?>
-									<li><?php echo $this->Html->link($plugin["name"],'/'.$topLevel["PluginCategories"]["name"].'/'.$plugin["QualifiedName"].'/'); ?></li>
+									<li><?php echo $this->Html->link('&nbsp;&nbsp;&nbsp;'.$plugin["name"],'/'.$topLevel["PluginCategories"]["name"].'/'.$plugin["QualifiedName"], array('escape'=>false)); ?></li>
 								<?php } ?>
-								</ul>
+								
 							</li>
 				 		<?php } ?>
 				 		<li><?php echo $this->Html->link('Edit Modules','/modules'); ?></li>
 				 		<?php 		}?>
-				 			<!-- 
-				 			
-				 									< ?php foreach ($pluginCategoties as $pluginCategotry){
-						 			$firstTime = true;
-									foreach ($pluginCategotry["CatPlugins"] as $plugin){
-										if($firstTime && Set::matches('/PluginsStartups[plugin_id='.$plugin["id"].']', $curStartupPlugins)) { ?>
-										
-											
-									
-											< ?php 
-												 
-											    echo '<ul class="leaf">';
-												$firstTime = false;
-										}//if ($firstTime &&
-								
-						
-										foreach ($pluginCategotry["CatPlugins"] as $plugin){
-											if(Set::matches('/PluginsStartups[plugin_id='.$plugin["id"].']', $curStartupPlugins)) {?>
-						 						
-											< ?php }//if
-						 				}//foreach 
-						 			}//foreach $pluginCategotry?>
-							<li>< ?php echo $this->Html->link('Edit Modules','/modules'); ?></li>
-					    		
-						< ?php  	}//foreach
-						 		
-				 	}//if  
-				?>    		
-				
-				< ?php // End of this needs to be automated ?> -->
 		    	</ul>
 		    </div>
 	    	<div id="content" class="span9">
