@@ -139,9 +139,31 @@
 				 		<?php 		}?>
 		    	</ul>
 		    </div>
-	    	<div id="content" class="span9">
+	    	<div id="content" class="span6">
 				<?php echo $this->fetch('content'); ?>
 			</div>
+			<?php if ($this->here != $this->webroot) { //TODO: This will wait till we sort out loggedin vs non-loggedin, as all "pub" pages don't need it?>
+				<div id="sh-stream" class="span3" >
+					<div class="stream-item" data-target="#">
+						<span class="label label-info">12 Dec</span>Update business plan for Q1/2013
+					</div>
+					<div class="stream-item" data-target="#">
+						<span class="label label-info">15 Dec</span>Send Christmas cards to customers and leads
+					</div>
+					<div class="stream-item" data-target="<?php echo $this->webroot;?>/basics/overview">
+						<span class="label label-info">20 Dec</span>Set out of office mechanisms in motion
+					</div>
+					<div class="stream-item" data-target="#">
+						<span class="label label-important">1 Jan</span>Test AWS upgrade
+					</div>
+					<div class="stream-item" data-target="#">
+						<span class="label label-success">2 Feb</span>Release alpha in U.S
+					</div>
+					<div class="stream-item" data-target="https://maps.google.com/maps?q=11+Penn+Plaza+New+York,+NY+10001&hl=en&sll=40.655639,-74.163208&sspn=0.839715,1.207123&t=h&hnear=11+Penn+Plaza,+New+York,+10001&z=17">
+						<span class="label label-warning">5 Mar</span>Meeting Verint, @10:00, 11 Penn Plaza, NY 
+					</div>
+				</div>
+			<?php }?>
   		</div>
 	</section>  	
   	<footer>
@@ -165,6 +187,9 @@
       <script type="text/javascript">
    		$(document).ready(function() {
 			$('a[href="<?php echo $this->here; ?>"]').closest('li').addClass('active');
+			$('.stream-item').click(function(e) {
+				document.location = $(this).attr('data-target');
+			});
 		});
    </script>
   </body>

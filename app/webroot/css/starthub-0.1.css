@@ -1,6 +1,8 @@
 @CHARSET "ISO-8859-1";
 body {
 	background-color:#fff;
+	color:#555;
+	font-size:13px;
 }
 header#header {
     border-top: 1px solid #111111;
@@ -61,7 +63,17 @@ section#hero h1{
 	 margin:0;
 }
 
-
+.stream-item {
+	background-color:#fdfdfd;
+	border-bottom: 1px solid #E3E3E3;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+    min-height: 30px;
+    padding: 6px;cursor:pointer;
+}
+.stream-item .label {
+	margin-right:6px;display:table;float:right;
+}
 .sh-menu > li {
     font-family: "Bariol",Helvetica,Arial,sans-serif;
     font-size:14px;
