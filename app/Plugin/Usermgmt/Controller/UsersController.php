@@ -303,7 +303,7 @@ class UsersController extends UserMgmtAppController {
 			if($connect) {
 				$this->render('popup');
 			} else {
-				$this->redirect("/dashboard");
+				$this->redirect(array('controller'=>'reports'));
 			}
 		}
 		if($connect=='fb') {

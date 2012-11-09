@@ -1,13 +1,13 @@
 	<ul class="nav nav-tabs" id="top-tabs">
 		<li>
-			<a href="#tips" data-toggle="tab">Tips and tricks</a>
+			<a href="#guide" data-toggle="tab">Guidance</a>
 		</li>
 		<li><a href="#team" data-toggle="tab">Team mates</a></li>
 		<li>
 			<a href="#user" data-toggle="tab">You</a>
 		</li>
 		<li>
-			<a href="#guide" data-toggle="tab">Guidance</a>
+			<a href="#tips" data-toggle="tab">Tips</a>
 		</li>
 	</ul>
 	<div class="tab-content" style="visibility:hidden" id="tabbed-content">
@@ -23,7 +23,7 @@
 			</div>
 		</div>
 		<div class="tab-pane" id="team">
-			<div class="span4">
+			<div class="span5">
 				<div class="widget-box">
 					<div class="widget-title">
 						<span class="icon"><i class="icon-user"></i> </span>
@@ -40,8 +40,8 @@
 							echo $this->Form->input('Mate Email', array('disabled' => true,"placeholder"=>"Please login to invite"));
 							echo $this->Form->input('Mate Role');
 						 }else{
-						 	echo $this->Form->input('Mate Name', array("placeholder"=>"Mark Zuckerberg"));
-							echo $this->Form->input('Mate Email', array("placeholder"=>"mark@gmail.com"));
+						 	echo $this->Form->input('Mate Name', array("placeholder"=>"Mark Zuckerberg",'class'=>'span4'));
+							echo $this->Form->input('Mate Email', array("placeholder"=>"mark@gmail.com",'class'=>'span4'));
 							$options = array();
 							foreach ($roles as $role){
 								
@@ -62,7 +62,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="span4">
+			<div class="span5">
 				<div class="widget-box">
 					<div class="widget-title">
 						<span class="icon"><i class="icon-globe"></i> </span>
@@ -123,20 +123,19 @@
 		</div>
 		<div class="tab-pane active" id="guide">
 				<div class="span3" style="margin-left:0">
-					<img src="http://www.marketplaceleaders.org/wp-content/uploads/2010/06/Business_People_In_Front_Of_A_Green_Map.jpg" class="img-circle" style="margin:35px 0">							
 					<p>Building a scalable business is a lot more than having a great
-							idea. More often than not, its all about the people. Whether you
-							plan on getting funded or bootstrapping your new initiative, you
+							idea. More often than not, it&#39;s all about the people. 
+							<br/><br/>
+							Whether you plan on getting funded or bootstrapping your new initiative, you
 							cant do it alone. A kickass team is the secret sauce that makes
-							a company succeed.</p>
+							a company succeed.</p><br/>
 					<p>Building the right team is more than just finding the smartest,
 							most qualified people around and waiting for them to get the job
 							done. It's also about <strong>balance</strong>. You&#39;ll need
-							to balance your team in a way that complement your strengths and
+							to balance your team in a way that complements your strengths and
 							bring unique talents and experience to the table.</p>
-				</div>
-				<div class="span3">	
-					<img src="http://www.featurepics.com/FI/Thumb300/20070822/Funny-Gurru-Laptop-Computer-424873.jpg" class="img-rounded" style="margin:35px 0;height:350px">		
+					<img src="http://www.marketplaceleaders.org/wp-content/uploads/2010/06/Business_People_In_Front_Of_A_Green_Map.jpg" class="img-circle" style="margin:35px 0">	
+					<br/><br/>	
 					<p>Every team needs at least two key players: a <strong>technical guru</strong>
 							- someone who can build the product and a <strong>business
 							driver</strong> - someone who understands the ecosystem - and
@@ -148,7 +147,7 @@
 							players, you will have a much lower chance of success.</p>
 				</div>
 				<div class="span3">
-					<img src="http://www.pickthebrain.com/blog/wp-content/uploads/2012/04/bigstock-Strength-9114473.jpg" class="img-rounded" style="margin:35px 0;">
+					<img src="http://www.pickthebrain.com/blog/wp-content/uploads/2012/04/bigstock-Strength-9114473.jpg" class="img-rounded" style="margin-bottom:35px;">
 					<p>Relevant experience is extremely important, people who worked
 							in startups environments (as opposed to corporates), who
 							understand the work and dedication needed, people who are hungry
@@ -162,7 +161,7 @@
 							finding a strong technical lead to compliment you.</p>
 					<p>Just remember that your team will be your greatest competitive
 							advantage. Products and markets can change, but a great team
-							will figure out a way to win in any situation</p>
+							will figure out a way to win in any situation.</p>
 				</div>
 		</div>
 	</div>
@@ -170,7 +169,7 @@
 <script>
 $(function () {
 	$('#tabbed-content').css('visibility','visible');
-	$('#top-tabs a:last').tab('show');
+	$('#top-tabs a:first').tab('show');
 });
 var newwindow;
 function login_popup(url) {

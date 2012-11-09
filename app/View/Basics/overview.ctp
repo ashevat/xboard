@@ -37,7 +37,7 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td class="taskDesc"><i class="icon-ok"></i> Thinking of a brilient idea</td>
+							<td class="taskDesc"><i class="icon-ok"></i> Thinking of a brilliant idea</td>
 							<td class="taskStatus"><span class="done">done</span></td>
 							<td class="taskOptions"><a href="#" class="tip-top"
 								data-original-title="Done"><i class="icon-ok"></i> </a> </td>
@@ -68,11 +68,9 @@
 	<div class="tab-pane" id="guide">
 		<div class="widget-box">
 			<div class="widget-title">
-				<span class="icon"><i class="icon-tag"></i> </span>
-				<h5>Cover Your Basic</h5>
-				<div class="buttons">
-					<a href="#" class="btn btn-mini"><i class="icon-question-sign"></i></a>
-				</div>
+				<span class="icon"><i class="icon-map-marker"></i> </span>
+				<h5>Where do I start</h5>
+				
 			</div>
 			<div class="widget-content" style="padding-top: 20px">
 				<p>In this section we will cover the basics, fundamental, aspects of your startup. Follow the tasks listed in this page to cover all your basics</p>

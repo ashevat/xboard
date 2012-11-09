@@ -33,12 +33,14 @@
 			<h1 class="logo">
 				<?php echo $this->Html->link('StartHub', '/', array()); ?>
 			</h1>
-			<div id="search">
+			<!-- 
+				<div id="search">
 				<input type="text" placeholder="search here..." class="span2">
 				<button class="tip-right" type="submit" data-original-title="Search">
 					<i class="icon-search icon-white"></i>
 				</button>
 			</div>
+			-->
 		</div>
     <div class="navbar" id="user-nav">
     <!-- 
@@ -53,23 +55,21 @@
           </div><!--/.nav-collapse -->
     	<ul class="nav btn-group">
     		<?php if (!isset($user['User'])) { ?>
-				<li class="btn btn-inverse">
-	      			<?php echo $this->Html->link('<i class="icon icon-user"></i><span class="text">Anonymous</span>','/login', array('escape'=>false)); ?>
-	      				
-	      			
+				<li class="btn">
+	      			<?php echo $this->Html->link('<i class="icon icon-user"></i><span class="text">Sign up or login</span>','/login', array('escape'=>false)); ?>
 	      		</li>
     		<?php } else { ?>
-    		<li class="btn btn-inverse">
-      			<a href="#" title="">
-      				<img src="<?php echo $this->Image->resize("img/".IMG_DIR, $user["UserDetail"]["photo"], 16, null, true) ?>"/> 
-      				<span class="text"><?php echo  $user['User']['first_name']?></span>
+    		<li class="btn btn-small">
+      			<a href="<?php echo $this->webroot;?>users/profile" title="">
+      				<img src="<?php echo $this->Image->resize("img/".IMG_DIR, $user["UserDetail"]["photo"], 16, null, true) ?>" style="margin-right:5px;"/>
+      				<span class="btn-text"><?php echo  $user['User']['first_name']?></span>
       			</a>
       		</li>
-      		<li class="btn btn-inverse dropdown" id="menu-messages">
+      		<li class="btn btn-small dropdown" id="menu-messages">
       			<a class="dropdown-toggle" data-target="#menu-messages" data-toggle="dropdown" href="#">
       				<i class="icon icon-envelope"></i>
-      				<span class="text">Messages</span>
-      				<span class="label label-important">15</span>
+      				<span class="btn-text">Mail</span>
+      				<span class="label label-info">15</span>
       				<b class="caret"></b>
       			</a>
       			<ul class="dropdown-menu">
@@ -79,14 +79,14 @@
       				<li><a class="sAdd" href="#" title="">Trash</a></li>
       			</ul>
       		</li>
-      		<li class="btn btn-mini btn-inverse">
+      		<li class="btn btn-small">
       			<a href="#" title="">
 					<i class="icon icon-cog"></i>
-					<span class="text">Settings</span>
+					<span class="btn-text">Settings</span>
 				</a>
       		</li>
-      		<li class="btn btn-mini btn-inverse">
-      			<?php echo $this->Html->link('<i class="icon icon-off"></i><span class="text">Logout</span>', '/logout', array('escape'=>false)); ?>
+      		<li class="btn btn-small">
+      			<?php echo $this->Html->link('<i class="icon icon-off"></i><span class="btn-text">Logout</span>', '/logout', array('escape'=>false)); ?>
       		</li>
     		<?php } ?>
       	</ul>
@@ -95,17 +95,17 @@
    	</header>
    <section id="hero">
    		<div class="container">
-   		<div class="span12">
-			<h1>StartHub - {Great Ideas Starts Here}</h1>
-		</div></div>
+   		<div class="span6 offset3">
+   			<h1>Starthub { Great ideas start here }</h1>
+   		</div></div>
 	</section>
 	<section id="main-site">
 		<div class="container">
 		    <div class="span2">
 		    		<a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a> <?php // what is this? ?>
 		    		<ul class="sh-menu">
-		    			<li><?php echo $this->Html->link('Home', '/'); ?></li>			
-		    			<li><?php echo $this->Html->link('Dashboard', '/reports'); ?></li>
+		    			<li><?php echo $this->Html->link('Home', $this->webroot); ?></li>			
+		    			<li><?php echo $this->Html->link('Dashboard', array('controller'=>'reports')); ?></li>
 		    			<li class="main-menu-item"><i class="icon-th-list"></i> Basics</li>
 						<li><?php echo $this->Html->image("ok.png"); ?><span class="task-completed"><?php echo $this->Html->link('Overview',array('controller'=>'basics', 'action'=>'overview')); ?></span></li>
 	    				<li><?php echo $this->Html->image("ok.png"); ?><span class="task-completed"><?php echo $this->Html->link('Team',array('controller'=>'basics', 'action'=>'team')); ?></span></li>
