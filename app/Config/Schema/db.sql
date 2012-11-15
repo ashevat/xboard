@@ -464,7 +464,7 @@ INSERT INTO `user_settings` (`id`, `name`, `name_public`, `value`, `type`) VALUE
 (12, 'useRecaptcha', 'Do you want to captcha support on registration form?', '1', 'checkbox'),
 (13, 'privateKeyFromRecaptcha', 'Enter private key for Recaptcha from google', '', 'input'),
 (14, 'publicKeyFromRecaptcha', 'Enter public key for recaptcha from google', '', 'input'),
-(15, 'loginRedirectUrl', 'Enter URL where user will be redirected after login ', '/dashboard', 'input'),
+(15, 'loginRedirectUrl', 'Enter URL where user will be redirected after login ', '/basics/overview', 'input'),
 (16, 'logoutRedirectUrl', 'Enter URL where user will be redirected after logout', '/login', 'input'),
 (17, 'permissions', 'Do you Want to enable permissions for users?', '1', 'checkbox'),
 (18, 'adminPermissions', 'Do you want to check permissions for Admin?', '0', 'checkbox'),
