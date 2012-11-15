@@ -612,3 +612,88 @@ INSERT INTO `plugin_categories` (`id`, `name`, `description`) VALUES
 (3, 'Marketing', 'some category description'),
 (4, 'Product Manegnment', 'some category description');
 
+
+--
+-- Table structure for table `tasks`
+--
+
+CREATE TABLE IF NOT EXISTS `tasks` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` char(100) NOT NULL,
+  `description` char(255) NOT NULL,
+  `task_type_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `tasks`
+--
+
+INSERT INTO `tasks` (`id`, `name`, `description`, `task_type_id`) VALUES
+(1, 'Do X', 'X is a very important thing', 1),
+(2, 'Do Y', 'Y is also a very important thing', 2),
+(3, 'Z', 'Make sure to Z everything', 2);
+
+
+
+--
+-- Table structure for table `tasks_icon`
+--
+
+CREATE TABLE IF NOT EXISTS `tasks_icon` (
+  `task_id` int(11) NOT NULL,
+  `icon` int(11) NOT NULL COMMENT 'this should be changed to a raw format later on to store the icon'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tasks_icon`
+--
+
+INSERT INTO `tasks_icon` (`task_id`, `icon`) VALUES
+(1, 1),
+(2, 1),
+(3, 1);
+
+
+
+
+--
+-- Table structure for table `task_status`
+--
+
+CREATE TABLE IF NOT EXISTS `task_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` char(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `task_status`
+--
+
+INSERT INTO `task_status` (`id`, `name`) VALUES
+(2, 'Closed'),
+(3, 'Open'),
+(4, 'Assigned');
+
+
+
+--
+-- Table structure for table `task_type`
+--
+
+CREATE TABLE IF NOT EXISTS `task_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` char(100) NOT NULL,
+  `description` char(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `task_type`
+--
+
+INSERT INTO `task_type` (`id`, `name`, `description`) VALUES
+(1, 'Marketing', 'Marketing tasks are tasks that relate to marketing activities'),
+(2, 'Engineering', 'Engineering tasks are tasks that relate to R&D activities');
+
