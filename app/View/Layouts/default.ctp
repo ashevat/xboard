@@ -41,8 +41,7 @@
 				</button>
 			</div>
 			-->
-		</div>
-    <div class="navbar" id="user-nav">
+		    <div class="navbar" id="user-nav">
     <!-- 
     	 <div class="nav-collapse">
             <ul class="nav">
@@ -53,11 +52,35 @@
               
             </ul>
           </div><!--/.nav-collapse -->
-    	<ul class="nav btn-group">
+    		<ul class="nav btn-group pull-right">
     		<?php if (!isset($user['User'])) { ?>
-				<li class="btn">
-	      			<?php echo $this->Html->link('<i class="icon icon-user"></i><span class="text">Sign up or login</span>','/login', array('escape'=>false)); ?>
-	      		</li>
+				<li class="btn btn-small dropdown" >
+		             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon icon-user"></i><span class="text">Sign up or login</span><b class="caret"></b></a>
+						<ul id="dropdown-login" class="dropdown-menu" style="padding: 5px 10px 0px 10px;">
+   							<li>
+   								<?php echo $this->Form->create('User', array('action' => 'login')); ?>
+						        <label><?php echo __('Email / Username');?></label>
+						        <?php echo $this->Form->input("email" ,array('label' => false,'div' => false,'class'=>"input-xlarge" ))?>
+						        <label><?php echo __('Password');?></label>
+						    	<?php echo $this->Form->input("password" ,array("type"=>"password",'label' => false,'div' => false,'class'=>"input-xlarge" ))?>
+								<?php if(!isset($this->request->data['User']['remember']))
+									$this->request->data['User']['remember']=true;
+								?>
+								<div style="clear:both"></div>
+								<label class="checkbox pull-left">
+							 		<?php echo $this->Form->input("remember" ,array("type"=>"checkbox",'div'=>false,'label' => false)); echo __('Remember me');?>
+							 	</label>
+								<button class="btn submit pull-right" type="submit"><?php echo __("Sign in")?></button>
+								<?php echo $this->Form->end(); ?>
+								<div style="clear:both"></div>
+								<div class="pull-left"><?php echo $this->Html->link(__("Forgot Password?"),"/forgotPassword",array("class"=>"style30")) ?><br/>
+								<?php echo $this->Html->link(__("Email Verification"),"/emailVerification",array("class"=>"style30")) ?></div>
+								<div style="clear:both"></div>
+								<?php echo $this->element('provider',array(),array('plugin'=>'Usermgmt')); ?>
+							</li>
+						</ul>
+					</li>
+				</ul>
     		<?php } else { ?>
     		<li class="btn btn-small">
       			<a href="<?php echo $this->webroot;?>users/profile" title="">
@@ -90,7 +113,7 @@
       		</li>
     		<?php } ?>
       	</ul>
-        
+        </div>
     </div>
    	</header>
    <section id="hero">
@@ -190,6 +213,9 @@
 			$('.stream-item').click(function(e) {
 				document.location = $(this).attr('data-target');
 			});
+			$("#dropdown-login").click(function(e) {
+				   e.stopPropagation();
+				);
 		});
    </script>
   </body>

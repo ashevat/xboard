@@ -63,14 +63,14 @@ a:hover {
 }
 
 */
-/* Top user navigation */
+/* Top user navigation 
 #user-nav {
     position: absolute;
     right: 30px;
     top: 5px;
     z-index: 20;
 }
-/*
+
 #user-nav > ul {
     margin: 0;
     padding: 0;

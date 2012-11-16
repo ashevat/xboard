@@ -22,7 +22,10 @@ header#header h1.logo a {
     line-height: 30px;
     font-family:olsen;arial;
 }
-
+#user-nav { float:right;
+    top: 5px;
+    z-index: 20;
+}
 .btn .label {top:0 !important;}
 header#header h1.logo {
 	float:left;
@@ -123,4 +126,9 @@ section#hero h1{
 	#sidebar > ul ul:after {
 		border-right: 6px solid #222222;
     }
+}
+
+#dropdown-login {
+	font-size:12px;
+	text-align:left;
 }
