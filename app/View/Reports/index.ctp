@@ -58,13 +58,13 @@
 									src="img/on_target.jpg"> <span class="user-info"> Roadmap Highlights: </span>
 									<ul>
 									<li>
-									Alpha release (1/1/2013)
+									<ontarget>Alpha release (1/1/2013)</ontarget>
 									</li>
 									<li>
-									Integration with Google Analytics (2/1/2013) 
+									<delayed>Integration with Google Analytics (2/1/2013)</delayed> 
 									</li>
 									<li>
-									Beta release (1/4/2013) 
+									<red>Beta release (1/4/2013)</red> 
 									</li>
 									</ul>
 									
