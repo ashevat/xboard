@@ -132,3 +132,8 @@ section#hero h1{
 	font-size:12px;
 	text-align:left;
 }
+
+
+delayed { color: red; }
+ontarget { color: blue; }
+notstarted { color: black; }
