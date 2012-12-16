@@ -30,38 +30,54 @@ App::uses('AppController', 'Controller');
  * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
 class ReportsController extends AppController {
-	
-	var $helpers = array('Form', 'Html', 'Session', 'Js', 'Usermgmt.UserAuth', 'Usermgmt.Image');
-    public $components = array('Session','RequestHandler', 'Usermgmt.UserAuth');
 
-/**
- * Controller name
- *
- * @var string
- */
+	var $helpers = array('Form', 'Html', 'Session', 'Js', 'Usermgmt.UserAuth', 'Usermgmt.Image');
+	public $components = array('Session','RequestHandler', 'Usermgmt.UserAuth');
+
+	/**
+	 * Controller name
+	 *
+	 * @var string
+	 */
 	public $name = 'Reports';
 
-/**
- * This controller does not use a model
- *
- * @var array
- */
+	/**
+	 * This controller does not use a model
+	 *
+	 * @var array
+	 */
 	public $uses = array();
 
-/**
- * Displays a view
- *
- * @param mixed What page to display
- * @return void
- */
+	/**
+	 * Displays a view
+	 *
+	 * @param mixed What page to display
+	 * @return void
+	 */
 	public function index() {
 	}
-	
-	
+
+
+	public function marketing_report() {
+
+	}
+
+	public function product_report() {
+
+	}
+
+	public function finance_report() {
+
+
+	}
+	public function operations_report() {
+
+
+	}
 
 	function beforeFilter(){
 		parent::beforeFilter();
 		$this->set('openActive','menu-dashboard');
 	}
-	
+
 }

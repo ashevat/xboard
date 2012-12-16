@@ -40,7 +40,7 @@
 												width="50" height="24"></canvas> </span> +34% </span></li>
 
 								<li class="viewall"><a class="tip-top"
-									href="./marketing_report.ctp" data-original-title="Show More">
+									href="/xboard/reports/marketing_report" data-original-title="Show More">
 										Show More </a></li>
 							</ul>
 						</div>
@@ -70,7 +70,7 @@
 									
 								</li>
 								<li class="viewall"><a class="tip-top"
-									href="./marketing_report.ctp" data-original-title="Show More">
+									href="/xboard/reports/product_report" data-original-title="Show More">
 										Show More </a></li>
 							</ul>
 						</div>
@@ -113,7 +113,7 @@
 											style="display: none;">60,469,580,920,2100,2600,3090</span> <canvas
 												width="50" height="24"></canvas> </span> </span></li>
 								<li class="viewall"><a class="tip-top"
-									href="./marketing_report.ctp" data-original-title="Show More">
+									href="/xboard/reports/finance_report" data-original-title="Show More">
 										Show More </a></li>
 							</ul>
 						</div>
@@ -152,7 +152,7 @@
 											style="display: none;">10,4,3</span> <canvas width="50"
 												height="24"></canvas> </span> </span></li>
 								<li class="viewall"><a class="tip-top"
-									href="./marketing_report.ctp" data-original-title="Show More">
+									href="/xboard/reports/operations_report" data-original-title="Show More">
 										Show More </a></li>
 							</ul>
 						</div>
